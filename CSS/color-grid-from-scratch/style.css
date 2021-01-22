@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+    font-size: 0px;
+}
+@media only screen and (min-width: 768px){
+    .light-pink {
+        display: inline-block;
+        background-color: #F5C6D6;
+        width: 95%;
+        height: 20%;
+        margin: .5%;
+    }
+    .hot-pink {
+        display: inline-block;
+        background-color: #EE2E84;
+        width: 23%;
+        height: 20%;
+        margin: .5%;
+    }
+    .blue {
+        display: inline-block;
+        background-color: #85CFD8;
+        width: 47%;
+        height: 20%;
+        margin: .5%
+    }
+    .green {
+        display: inline-block;
+        background-color: #8DC63F;
+        width: 69%;
+        height: 20%;
+        margin: .5%;
+    }
+    .orange {
+        display: inline-block;
+        background-color: #E76E34;
+        width: 25%;
+        height: 20%;
+        margin: .5%;
+    }
+}
+@media only screen and (max-width: 768px){
+    .light-pink {
+        display: inline-block;
+        background-color: #F5C6D6;
+        width: 100%;
+        height: 20%;
+        margin: .5%;
+    }
+    .hot-pink {
+        display: inline-block;
+        background-color: #EE2E84;
+        width: 100%;
+        height: 20%;
+        margin: .5%;
+    }
+    .blue {
+        display: inline-block;
+        background-color: #85CFD8;
+        width: 100%;
+        height: 20%;
+        margin: .5%
+    }
+    .green {
+        display: inline-block;
+        background-color: #8DC63F;
+        width: 100%;
+        height: 20%;
+        margin: .5%;
+    }
+    .orange {
+        display: inline-block;
+        background-color: #E76E34;
+        width: 100%;
+        height: 20%;
+        margin: .5%;
+    }
+}

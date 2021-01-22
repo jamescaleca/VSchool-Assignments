@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Animaniacs: The Website!</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <!--Header-->
+    <nav class="header">
+        <ul>
+            <li><a class="home" href="#top">Animaniacs</a></li>
+            <li><a class="pagelink1" href="#yakko-yaks">Yakko Yaks</a></li>
+            <li><a class="pagelink2" href="#wakko-snacks">Wakko Snacks</a></li>
+            <li><a class="pagelink3" href="#daily-dot">Daily Dot</a></li>
+        </ul>
+    </nav>
+
+    <!--Yakko Yaks Section-->
+    <div class="banner" id="yakko-yaks">
+        <h1>Yakko Yaks</h1>
+        <div class="border" id="yakko-border">
+            <img class="" id="yakko-asks" src="./pngs/yakko.png" alt="Yakko Image">
+        <p>Hey, kids! What's the best use for bologna?</p>
+        <button type="button" id="put-in-slacks">Putting it in your slacks, of course!</button>
+        <button type="button" id="something-else">Gee, I don't know. Maybe eating??</button>
+        </div>
+    </div>
+
+    <!--Wakko Snacks Section-->
+    <div class="wakko" id="wakko-snacks">
+        <h1>Wakko Snacks</h1>
+        <img id="wakko" src="./pngs/wakko.png" alt="Wakko Image">
+        <p>What snacks should we give Wakko today?</p>
+        <section class="snack-form">
+            <input type="text" id="snack">
+            <button id="submit">Submit</button>
+        </section>
+        <button type="button" id="snacks-given">What snacks have we given the Wakko?</button>
+        <button type="button" id="first-snack">What was the first snack we gave him today?</button>
+        <p>Snack counter:</p>
+        <p id="snack-counter">0</p>
+    </div>
+
+    <!--Daily Dot Section-->
+    <div class="daily-dot-card">
+        <span class="daily-dot-large" id="daily-dot">Daily Dot</span><br>
+        <figure>
+            <img id="dot" src="./pngs/dot.png" alt="Dot Image">
+            <figcaption><em>@realDotWarner</em></figcaption>
+        </figure>
+        <p class="subheader">A brand-new social media platform run entirely by Dot Warner, the Warner Sister!</p>
+        <form id="daily-dot-form">
+            <input type="text" name="tweet">
+            <input type="submit" value="Submit">
+        </form>
+        <div id="tweets">
+            <ul>
+                <li>
+                    <div class="dot-profile"></div>
+                    <span>Yo yo yo, it's Dot!</span>
+                </li>
+                <li>
+                    <div class="dot-profile"></div>
+                    <span>I'm Dot Warner, and I approve this message.</span>
+                </li>
+                <li>
+                    <div class="dot-profile"></div>
+                    <span>The right man for the job is always a Dot!</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="./js/app.js"></script>
+</body>
+</html>

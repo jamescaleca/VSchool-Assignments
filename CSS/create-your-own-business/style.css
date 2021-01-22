@@ -1,0 +1,521 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    background-color: gray;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+/* Mobile */
+
+@media only screen and (min-width: 300px){
+    .nav-bar {
+        position: sticky;
+        top: 0;
+        line-height: 0%;
+        border-bottom: solid orange 2px;
+        font-size: 12px;
+    }
+    .nav-bar ul {
+        list-style: none;
+    }
+    .nav-bar li {
+        display: inline-block;
+        padding: 8px;
+    }
+    .nav-bar button {
+        padding: 1px 2px;
+    }
+    #sign-in {
+        background-color: orange;
+        color: white;
+        text-shadow: 1px 1px black;
+    }
+    #create-account {
+        background-color: orange;
+        color: black;
+        text-shadow: 1px 1px firebrick;
+    }
+    a:link {
+        color: black;
+    }
+    a:visited {
+        color: purple;
+    }
+    a:hover {
+        color: fuchsia;
+    }
+    h1 {
+        display: block;
+        position: relative;
+        text-shadow: 1px 1px white;
+        text-align: center;
+        color: orange;
+        background-color: black;
+    }
+    .main-logo {
+        padding-top: 0;
+        padding-bottom: 3px;
+        font-size: 35px;
+        position: relative;
+    }
+    .download {
+        display: block;
+        background-color: orangered;
+        text-align: center;
+        margin-top: 50px;
+        box-sizing: border-box;
+        border-radius: 10%;
+        box-shadow: 2px 5px 10px black;
+    }
+    .music-makes {
+        font-size: 20px;
+        padding-top: 10px;
+        padding-bottom: 35px;
+        text-shadow: 2px 2px firebrick;
+    }
+    .download-here {
+        font-size: 13px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .download-here span {
+        color: orange;
+        text-shadow: 1px 1px black;
+    }
+    h2 {
+        display: block;
+        text-align: center;
+        text-shadow: 2px 2px black;
+        color: orange;
+    }
+    h3 {
+        display: block;
+        text-align: center;
+        color: orange;
+    }
+    p {
+        position: relative;
+        display: block;
+        margin-left: 15px;
+        color: orange;
+        width: 500px;
+        text-align: left;
+    }
+    li {
+        color: orange;
+    }
+    .listen-here {
+        padding-top: 0;
+        width: 100%;
+        position: relative;
+        text-align: center;
+        font-family: Tahoma;
+        font-size: 30px;
+    }
+    .social {
+        display: block;
+        text-align: center;
+    }
+    .social li {
+        list-style: none;
+        position: relative;
+        text-align: center;
+    }
+    #music {
+        max-height: 30%;
+        max-width: 30%;
+    }
+    #facebook {
+        max-height: 30%;
+        max-width: 30%;
+        padding: 25px;
+    }
+    #twitter {
+        max-height: 30%;
+        max-width: 30%;
+        padding: 25px;
+    }
+    #insta {
+        max-height: 30%;
+        max-width: 30%;
+        padding: 25px;
+    }
+    #phone-number {
+        padding-bottom: 15px;
+        text-decoration: cornflowerblue;
+    }
+    #address {
+        padding-bottom: 15px;
+    }
+    .top-button {
+        margin-top: 50px;
+        width: 50px;
+    }
+    footer {
+        margin-bottom: 0px;
+        margin-top: 75px;
+        padding-top: 75px;
+        color: slateblue;
+        background-color: black;
+    }
+    .footer-social {
+        display: inline-block;
+        position: relative;
+        margin-left: 50%;
+        list-style: none;
+        text-align: center;
+        padding-bottom: 7px;
+    }
+    .footer-social img {
+        padding-left: 10px;
+        padding-bottom: 5px;
+    }
+    #facebook-footer {
+        width: 25%;
+        height: 25%;
+    }
+    #twitter-footer {
+        width: 25%;
+        height: 25%;
+    }
+    #insta-footer {
+        width: 25%;
+        height: 25%;
+    }
+    #address-footer {
+        list-style: none;
+    }
+    /* Music Page */
+    
+    #music-playlist ul {
+        list-style-type: none;
+        border: 1px solid #dddddd;
+        box-shadow: 5px 10px 8px orange;
+    }
+    #music-playlist ul li {
+        padding: 8px 16px;
+        border-bottom: 1px solid #dddddd;
+        box-shadow: 5px 5px 8px orange;
+    }
+    #music-playlist ul li:last-child {
+        border-bottom: none;
+    }
+    .music-icon {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        vertical-align: middle;
+        background-image: url("assets/eighth-note.png");
+        background-size: cover;
+        display: inline-block;
+    }
+}
+
+/* Tablet */
+
+@media only screen and (min-width: 700px){
+    .nav-bar {
+        font-size: 15px;
+    }
+    .nav-bar li {
+        padding: 8px;
+    }
+    .nav-bar button {
+        padding: 2px 3px;
+    }
+    h1 {
+        text-shadow: 2px 2px white;
+    }
+    .main-logo {
+        padding-bottom: 5px;
+        font-size: 43px;
+    }
+    .download {
+        margin-top: 60px;
+        border-radius: 10%;
+        box-shadow: 3px 8px 12px black;
+    }
+    .music-makes {
+        font-size: 25px;
+        padding-top: 12px;
+        padding-bottom: 45px;
+    }
+    .download-here {
+        font-size: 15px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    p {
+        margin-left: 17px;
+        width: 675px;
+    }
+    .listen-here {
+        font-size: 35px;
+    }
+    #music {
+        max-height: 25%;
+        max-width: 25%;
+    }
+    #facebook {
+        max-height: 35%;
+        max-width: 35%;
+        padding: 20px;
+    }
+    #twitter {
+        max-height: 35%;
+        max-width: 35%;
+        padding: 20px;
+    }
+    #insta {
+        max-height: 35%;
+        max-width: 35%;
+        padding: 20px;
+    }
+    #phone-number {
+        padding-bottom: 17px;
+    }
+    #address {
+        padding-bottom: 17px;
+    }
+    .top-button {
+        padding: 15px 20px;
+        width: 100px;
+        align-self: center;
+    }
+    footer {
+        margin-top: 175px;
+        padding-top: 80px;
+    }
+    .footer-social {
+        margin-left: 50%;
+        padding-bottom: 8px;
+    }
+    .footer-social img {
+        padding-left: 12px;
+        padding-bottom: 7px;
+    }
+    #facebook-footer {
+        width: 20%;
+        height: 20%;
+    }
+    #twitter-footer {
+        width: 20%;
+        height: 20%;
+    }
+    #insta-footer {
+        width: 20%;
+        height: 20%;
+    }
+
+}
+
+/* Desktop */
+@media only screen and (min-width: 1000px){
+    .nav-bar {
+        position: sticky;
+        top: 0;
+        line-height: 0%;
+        border-bottom: solid orange 2px;
+        font-size: 17px;
+    }
+    .nav-bar ul {
+        list-style: none;
+    }
+    .nav-bar li {
+        display: inline-block;
+        padding: 10px;
+    }
+    .nav-bar button {
+        padding: 3px 5px;
+    }
+    #sign-in {
+        background-color: orange;
+        color: white;
+        text-shadow: 1px 1px black;
+    }
+    #create-account {
+        background-color: orange;
+        color: black;
+        text-shadow: 1px 1px firebrick;
+    }
+    a:link {
+        color: black;
+    }
+    a:visited {
+        color: purple;
+    }
+    a:hover {
+        color: fuchsia;
+    }
+    h1 {
+        display: block;
+        position: relative;
+        text-shadow: 3px 3px white;
+        text-align: center;
+        color: orange;
+        background-color: black;
+    }
+    .main-logo {
+        padding-top: 0;
+        padding-bottom: 5px;
+        font-size: 50px;
+        position: relative;
+    }
+    .download {
+        display: block;
+        background-color: orangered;
+        text-align: center;
+        margin-top: 75px;
+        box-sizing: border-box;
+        border-radius: 25%;
+        box-shadow: 5px 10px 18px black;
+    }
+    .music-makes {
+        font-size: 30px;
+        padding-top: 15px;
+        padding-bottom: 50px;
+        text-shadow: 2px 2px firebrick;
+    }
+    .download-here {
+        font-size: 17px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .download-here span {
+        color: orange;
+        text-shadow: 1px 1px black;
+    }
+    h2 {
+        display: block;
+        text-align: center;
+        text-shadow: 2px 2px black;
+        color: orange;
+    }
+    h3 {
+        display: block;
+        text-align: center;
+        color: orange;
+    }
+    p {
+        position: relative;
+        display: block;
+        margin-left: 20px;
+        color: orange;
+        width: 1000px;
+        text-align: left;
+    }
+    li {
+        color: orange;
+    }
+    .listen-here {
+        padding-top: 0;
+        width: 100%;
+        position: relative;
+        text-align: center;
+        font-family: Tahoma;
+        font-size: 40px;
+    }
+    .social {
+        display: block;
+        text-align: center;
+    }
+    .social li {
+        list-style: none;
+        position: relative;
+        text-align: center;
+    }
+    #music {
+        max-height: 25%;
+        max-width: 25%;
+    }
+    #facebook {
+        max-height: 15%;
+        max-width: 15%;
+        padding: 30px;
+    }
+    #twitter {
+        max-width: 15%;
+        max-height: 15%;
+        padding: 30px;
+    }
+    #insta {
+        max-width: 15%;
+        max-height: 15%;
+        padding: 30px;
+    }
+    #phone-number {
+        padding-bottom: 20px;
+        text-decoration: cornflowerblue;
+    }
+    #address {
+        padding-bottom: 20px;
+    }
+    #here:hover {
+        color: white;
+    }
+    .top-button {
+        padding: 20px 25px;
+        width: 125px;
+    }
+    footer {
+        margin-bottom: 0px;
+        margin-top: 200px;
+        padding-top: 100px;
+        color: slateblue;
+        background-color: black;
+    }
+    .footer-social {
+        display: inline-block;
+        position: relative;
+        margin-left: 60%;
+        list-style: none;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .footer-social img {
+        padding-left: 15px;
+        padding-bottom: 10px
+    }
+    #facebook-footer {
+        width: 15%;
+        height: 15%;
+    }
+    #twitter-footer {
+        width: 15%;
+        height: 15%;
+    }
+    #insta-footer {
+        width: 15%;
+        height: 15%;
+    }
+    #address-footer {
+        list-style: none;
+    }
+    
+    /* Music Page */
+    
+    #music-playlist ul {
+        list-style-type: none;
+        border: 1px solid #dddddd;
+        box-shadow: 5px 10px 8px orange;
+    }
+    #music-playlist ul li {
+        padding: 8px 16px;
+        border-bottom: 1px solid #dddddd;
+        box-shadow: 5px 5px 8px orange;
+    }
+    #music-playlist ul li:last-child {
+        border-bottom: none;
+    }
+    .music-icon {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        vertical-align: middle;
+        background-image: url("assets/eighth-note.png");
+        background-size: cover;
+        display: inline-block;
+    }
+}

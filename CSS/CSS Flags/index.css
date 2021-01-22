@@ -1,0 +1,204 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+.flag {
+    display: block;
+    background-color: #ffffff;
+}
+.france {
+    height: 800px;
+    width: 1200px;
+    border: 1px solid black;
+    overflow: hidden;
+}
+.fr-blue {
+    display: block;
+    position: relative;
+    height: 2000px;
+    width: 33.33%;
+    float: left;
+    width: 33%;
+    background-color: blue;
+}
+.fr-red {
+    display: block;
+    position: relative;
+    float: right;
+    height: 100%;
+    width: 33.33%;
+    background-color: red;
+}
+.germany {
+    height: 800px;
+    width: 1333.33px;
+    background-color: yellow;
+    border: 1px solid black;
+    overflow: hidden;
+}
+.de-black {
+    display: block;
+    position: relative;
+    height: 33%;
+    width: 100%;
+    background-color: black;
+}
+.de-red {
+    display: block;
+    position: relative;
+    height: 33%;
+    width: 100%;
+    background-color: red;
+}
+.madagascar {
+    height: 800px;
+    width: 1200px;
+    background-color: white;
+    border: 1px solid black;
+    overflow: hidden;
+}
+.mg-red {
+    display: block;
+    position: relative;
+    float: right;
+    height: 50%;
+    width: 66%;
+    background-color: #fc3e32;
+}
+.mg-green {
+    display: block;
+    position: relative;
+    float: right;
+    height: 50%;
+    width: 66%;
+    background-color: #007e39;
+}
+.switzerland {
+    background-color: #FF0002;
+    height: 800px;
+    width: 800px;
+    border-radius: 5px;
+    margin: auto;
+    overflow: hidden;
+}
+.white {
+    display: block;
+    position: absolute;
+    background-color: white;
+}
+.sw-vcross {
+    height: 480px;
+    width: 160px;
+    margin-left: 320px;
+    margin-top: 160px;
+}
+.sw-hcross {
+    height: 160px;
+    width: 480px;
+    margin-left: 160px;
+    margin-top: 320px;
+}
+.sweden {
+    background-color: #0269A6;
+    height: 750px;
+    width: 1200px;
+    overflow: hidden;
+    border: 1px solid black;
+}
+.yellow {
+    display: block;
+    position: absolute;
+    background-color: #FECC00;
+}
+.se-vcross {
+    height: 750px;
+    width: 130px;
+    margin-left: 300px;
+}
+.se-hcross {
+    height: 130px;
+    width: 1200px;
+    margin-top: 300px;
+}
+.gambia {
+    display: block;
+    background-color: white;
+    height: 800px;
+    width: 1200px;
+    overflow: hidden;
+    border: 1px solid black;
+}
+.gb-red {
+    display: block;
+    position: relative;
+    background-color: #CE1127;
+    height: 33%;
+    width: 1200px;
+    margin-bottom: 37px;
+}
+.gb-blue {
+    display: block;
+    position: relative;
+    background-color: #0D1D8B;
+    height: 25%;
+    width: 1200px;
+    border-color: white;
+}
+.gb-green {
+    display: block;
+    position: relative;
+    background-color: #3B7827;
+    height: 33%;
+    width: 1200px;
+    margin-top: 37px;
+}
+.japan {
+    height: 800px;
+    width: 1200px;
+    overflow: hidden;
+    border: 1px solid black;
+}
+.red-circle {
+    display: block;
+    position: relative;
+    background-color: #BC022C;
+    border-radius: 50%;
+    height: 500px;
+    width: 500px;
+    margin-left: 350px;
+    margin-top: 150px;
+}
+.niger {
+    display: block;
+    background-color: white;
+    height: 600px;
+    width: 700px;
+    overflow: hidden;
+    border: 1px solid black;
+}
+.orange {
+    display: block;
+    position: absolute;
+    background-color: #E15307;
+}
+.nr-stripe {
+    position: relative;
+    height: 200px;
+    width: 700px;
+}
+.nr-circle {
+    position: relative;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    margin-left: 275px;
+    margin-top: 25px;
+}
+.nr-green {
+    display: block;
+    position: relative;
+    height: 33.33%;
+    width: 700px;
+    background-color: #10AF2A;
+    margin-top: 25px;
+}
