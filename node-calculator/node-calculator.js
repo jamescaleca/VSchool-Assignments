@@ -1,7 +1,5 @@
 const readline = require("readline-sync")
 
-// Ask user for number input
-
 const num1 = readline.question("Please enter your first number -> ");
 const num2 = readline.question("Please enter your second number -> ");
 
