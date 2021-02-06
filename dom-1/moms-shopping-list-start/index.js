@@ -8,7 +8,6 @@ function createShopItem(e){
     x.appendChild(edit);
     itemDiv.appendChild(x);
     var y = document.createElement("button");
-    y.id = "remove";
     var remove = document.createTextNode("X");
     y.appendChild(remove);
     itemDiv.appendChild(y);
@@ -16,7 +15,7 @@ function createShopItem(e){
     itemDiv.style.padding = "10px";
     shopItem.style.textAlign = "center";
     document.getElementById("list").appendChild(shopItem)
-    console.log(shopItem);
+    y.addEventListener("click", (e) => shopItem.remove());
     return shopItem
 }
 
@@ -24,7 +23,4 @@ document.getElementById("submit").addEventListener("click", (e) => {
     event.preventDefault();
     const shopItem = createShopItem(e);
     document.getElementById("list").appendChild(shopItem);
-    document.getElementById("remove").addEventListener("click", (e) => {
-        e.target.parentElement.parentElement.remove();
-    })
 })
