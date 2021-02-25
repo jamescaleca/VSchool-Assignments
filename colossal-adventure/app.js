@@ -2,9 +2,7 @@ const {exit} = require("process");
 const readline = require("readline-sync");
 const sleep = require("system-sleep");
 let playerStatus = {Name: "", Lives: 1, HP: 35, Inventory: [], WalkedPaces: 0};
-chance = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+chance = (min, max) => {return Math.floor(Math.random() * (max - min + 1)) + min;}
 
 //Die
 die = () => {
@@ -33,7 +31,6 @@ if (firstChoiceResponse === 0) {
 } else {
     exit();
 }
-
 
 //sleep(2*1000);
 const playerName = readline.question("OPERATOR: 'What is your name?' ");
@@ -149,15 +146,6 @@ battle = () => {
     return;
 }
 
-//Walk
-// walk = () => {
-//     if (chance(0, 1) === 1) {
-//         battle();
-//     } else if (chance(0, 1) === 0) {
-//         playerStatus.WalkedPaces = playerStatus.WalkedPaces + 2;
-//         console.log("You walk two paces forward.");
-//     }
-// }
 useItem = () => {
     while (playerStatus.Inventory.length > 0) {
         inventoryIndex = readline.keyInSelect(playerStatus.Inventory, "Which item would you like to use?");
