@@ -1,0 +1,30 @@
+div {
+    padding: 10px;
+    margin-left: 5px;
+    border-bottom: solid black;
+    border-left: solid black;
+    border-right: solid black;
+}
+
+#add {
+    background-color: green;
+    border-top: solid black;
+}
+
+#subtract {
+    background-color: blue;
+}
+
+#multiply {
+    background-color: red;
+}
+
+#addH1 {
+    color: green;
+}
+#subH1 {
+    color: blue;
+}
+#multH1 {
+    color: red;
+}
