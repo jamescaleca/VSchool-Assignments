@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Travel Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Travel Form</h1>
+    <form name="passengerData">
+        Name:
+        <input type="text" name="firstName" placeholder="First Name" required/>
+        <input type="text" name="lastName" placeholder="Last Name" required/><br><br>
+
+        Age:  <input type="number" name="age"/><br><br>
+
+        Gender: <br>
+        Male <input type="radio" name="gender" value="Male"/><br>
+        Female <input type="radio" name="gender" value="Female"/><br>
+        Nonbinary <input type="radio" name="gender" value="Nonbinary"/><br><br>
+
+        Destination: 
+        <select name="destination">
+            <option value="none" selected disabled hidden>Select</option>
+            <option value="Japan">Japan</option>
+            <option value="Necropolis">Necropolis</option>
+            <option value="Milan">Milan</option>
+        </select><br><br>
+
+        Dietary Restrictions: <br>
+        Vegetarian <input type="checkbox" value="Vegetarian" name="dietRestrict"/><br>
+        Kosher <input type="checkbox" value="Kosher" name="dietRestrict"/><br>
+        Lactose Free<input type="checkbox" value="Lactose free" name="dietRestrict"/><br><br>
+
+        <button>Submit</button>
+    </form>
+    <script src="app.js"></script>
+</body>
+</html>

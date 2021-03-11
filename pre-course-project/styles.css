@@ -124,7 +124,7 @@ html {
         width: 50px;
         border-radius: 50%;
         vertical-align: middle;
-        background-image: url('../pngs/dot-profile.png');
+        background-image: url('./pngs/dot-profile.png');
         background-size: cover;
         display: inline-block;
     }
