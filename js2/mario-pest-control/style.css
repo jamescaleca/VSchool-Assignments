@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 20px;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    text-align: center;
+}
+
+body {
+    background-color: cornflowerblue;
+}
+
+header {
+    color: yellow;
+    width: 100%;
+    padding-top: 70px;
+    background-image: url('./pngs/background3.png');
+    background-size: cover;
+    height: 190px;
+    width: 100%;
+    font-size: 60px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+form img {
+    height: 50px;
+    width: 50px;
+    vertical-align: middle;
+    background-size: cover;
+    display: inline-block;
+}
+
+form button {
+    background-color: yellow;
+    border: 1px solid black;
+    color: black;
+    padding: 15px 30px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.footer {
+    display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: yellow;
+    font-size: 14px;
+    text-align: left;
+}
