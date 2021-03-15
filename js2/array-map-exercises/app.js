@@ -1,14 +1,12 @@
 //#1
-function doubleNumbers(arr){
-    return arr.map(num => num * 2);
-}
-console.log(doubleNumbers([2, 5, 100])); // [4, 10, 200]
+function doubleNumbers(arr){return arr.map(num => num * 2);}
+
+console.log(doubleNumbers([2, 5, 100]));
 
 //#2
-function stringItUp(arr){
-    return arr.map(num => JSON.stringify(num));
-}
-console.log(stringItUp([2, 5, 100])); // ["2", "5", "100"]
+function stringItUp(arr){return arr.map(num => JSON.stringify(num));}
+
+console.log(stringItUp([2, 5, 100]));
 
 //#3
 function capitalizeNames(arr){
@@ -17,15 +15,10 @@ function capitalizeNames(arr){
         return newPerson;
     })
 }
-console.log(capitalizeNames(["john", "JACOB", "jinGleHeimer", "schmidt"])); // ["John", "Jacob", "Jingleheimer", "Schmidt"]
+console.log(capitalizeNames(["john", "JACOB", "jinGleHeimer", "schmidt"]));
 
 //#4
-function namesOnly(arr){
-    return arr.map(person => {
-        const justName = person.name;
-        return justName;
-    })
-}
+function namesOnly(arr){return arr.map(person => {return person.name;})}
 console.log(namesOnly([
     {
         name: "Angelina Jolie",
@@ -48,7 +41,6 @@ console.log(namesOnly([
         age: 100
     }
 ])); 
-// ["Angelina Jolie", "Eric Jones", "Paris Hilton", "Kayne West", "Bob Ziroll"]
 
 //#5
 function makeStrings(arr){
@@ -83,18 +75,10 @@ console.log(makeStrings([
         age: 100
     }
 ])); 
-// ["Angelina Jolie can go to The Matrix", 
-// "Eric Jones is under age!!", 
-// "Paris Hilton is under age!!", 
-// "Kayne West is under age!!", 
-// "Bob Ziroll can go to The Matrix"]
 
 //#6
-function readyToPutInTheDOM(arr){
-    return arr.map(person => {
-        return `<h1>${person.name}</h1><h2>${person.age}</h2>`
-    })
-}
+function readyToPutInTheDOM(arr){return arr.map(person => {return `<h1>${person.name}</h1><h2>${person.age}</h2>`})}
+
 console.log(readyToPutInTheDOM([
     {
         name: "Angelina Jolie",
@@ -117,8 +101,3 @@ console.log(readyToPutInTheDOM([
         age: 100
     }
 ])); 
-// ["<h1>Angelina Jolie</h1><h2>80</h2>", 
-// "<h1>Eric Jones</h1><h2>2</h2>", 
-// "<h1>Paris Hilton</h1><h2>5</h2>", 
-// "<h1>Kayne West</h1><h2>16</h2>", 
-// "<h1>Bob Ziroll</h1><h2>100</h2>"]
