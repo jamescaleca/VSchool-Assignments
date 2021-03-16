@@ -36,6 +36,19 @@ var peopleArray = [
     }
 ]
 
+const newPeopleArray = [
+    {
+        firstName: "Victor",
+        lastName: "Wooten",
+        age: 57
+    },
+    {
+        firstName: "Baard",
+        lastName: "Kolstad",
+        age: 29
+    }
+]
+
 function sortedOfAge(arr){
     const newArr = []
     arr.sort((a, b) => a.lastName.localeCompare(b.lastName))
@@ -49,13 +62,21 @@ function sortedOfAge(arr){
 
 console.log(sortedOfAge(peopleArray));
 
-/*
-Output: 
-[ 
-    "<li>Kyle Mooney is 27</li>",
-    "<li>Sarah Palin is 47</li>",
-    "<li>Rick Sanchez is 78</li>",
-    "<li>Morty Smith is 29</li>",
-    "<li>Lev Tolstoy is 82</li>" 
-]
-*/
+function addArray(arr){
+    arr.forEach(person => peopleArray.push(person))
+    return peopleArray
+}
+console.log(addArray(newPeopleArray));
+
+const peopleNoEndYOrA = []
+
+function yAndAFilter(arr) {
+    arr.filter(person => {
+        if(person.lastName[-1] !== "y" | person.lastName[-1] !== "a") {
+            peopleNoEndYOrA.push(person)
+        }
+    })
+    return peopleNoEndYOrA;
+}
+
+console.log(yAndAFilter(peopleArray))
