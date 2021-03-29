@@ -1,0 +1,65 @@
+{
+    "appetizers": [
+        {
+            "item": "Jalapeno Poppers",
+            "ingredients": ["jalapenos", "cream cheese", "batter"],
+            "description": "Jalapenos stuffed with cream cheese, deep fried"
+        },
+        {
+            "item": "Charcuterie Board",
+            "ingredients": ["salami", "aged gouda", "grapes"],
+            "description": "Chef's choice assortment of fresh sliced salami, cheese, and fruit"
+        }
+    ],
+
+    "cold sandwiches": [
+        {
+            "item": "Club",
+            "ingredients": ["turkey breast", "swiss cheese", "tomato", "olive oil", "whole wheat bread"],
+            "description": "All the above ingredients, lovingly thrown together and cut into triangles"
+        },
+        {
+            "item": "Italian",
+            "ingredients": ["salami", "mozzarella", "roasted red pepper", "basil leaves", "olive oil", "submarine roll"],
+            "description": "All ingredients layered on submarine roll and cut in half"
+        }
+    ],
+
+    "hot sandwiches": [
+        {
+            "item": "Reuben",
+            "ingredients": ["corned beef", "sauerkraut", "Swiss cheese", "Russian dressing", "rye bread"],
+            "description": "Classic sandwich lightly toasted until cheese is melty"
+        },
+        {
+            "item": "Philly Cheese Steak",
+            "ingredients": ["ribeye steak", "green peppers", "onions", "white American cheese", "hoagie roll"],
+            "description": "Chef's favorite: Steak, peppers, and onions seared to perfection, topped with salty, creamy cheese and in between delicious hoagie bread"
+        }
+    ],
+
+    "desserts": [
+        {
+            "item": "Basque-style cheesecake",
+            "ingredients": ["cream cheese", "eggs", "heavy cream", "flour", "sugar", "vanilla extract"],
+            "description": "Cheesecake done wrong, the right way! Higher oven temperature and modified ingredients give the cheesecake a burnt look"
+        },
+        {
+            "item": "Chocolate chip cookie",
+            "ingredients": ["eggs", "vanilla extract", "butter", "brown and white sugar", "mini chocolate chips", "flour", "salt", "baking soda"],
+            "description": "Freshly baked chocolate chip cookies served with ice cold milk"
+        }
+    ],
+    "drinks": [
+        {
+            "item": "Beer",
+            "ingredients": ["wheat", "water", "local airborne yeast", "hops"],
+            "description": "Delicious, refreshing, liquid bread"
+        },
+        {
+            "item": "Hot chocolate",
+            "ingredients": ["steamed milk", "65% cacao chocolate", "whipped cream", "chocolate shavings"],
+            "description": "Delicious, piping hot chocolate, perfect for those cold Winter days"
+        }
+    ]
+}

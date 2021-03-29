@@ -61,7 +61,7 @@ h1 {
     display: inline-block;
     position: relative;
     
-    padding: 0px 0 0px 0;
+    padding: 0 0 0 0;
     font-size: 50px;
     
     
@@ -162,14 +162,12 @@ h3 {
     margin-top: 25%;
     margin-left: 25%;
     padding-left: 60px;
-    
-    
 }
 #view-designs button {
     display: inline-block;
     cursor: pointer;
     background-color: transparent;
-    -webkit-font-smoothing: antialiased;
+    
     color: rgba(255, 255, 255, 0.65);
     opacity: 0.7;
     transition: background-color .5s ease-in, opacity .5s ease-in;
@@ -313,14 +311,14 @@ h3 {
     header {
         text-align: left;
     }
+
+    
     h1 {
-        display: inline-block;
         position: relative;
         margin: 15px 0 0 0;
         padding: 60px 0 5px 0;
     }
     h2 {
-        display: block;
         margin: 0;
         padding: 5px 0 60px 70px;
     }
@@ -331,8 +329,44 @@ h3 {
 
 @media (max-width: 900px){
     /* use this media query to help these two cells drop to the bottom when screens are smaller */
+    header {
+        font-size: 80%;
+        height: 160px;
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: auto;
+    }
+    
+    h1 {
+        font-size: 34px;
+        padding: 0 0 0 0;
+        text-align: center;
+    }
+    h2 {
+        font-size: 20px;
+        margin-top: 0;
+        padding: 0 0 0 80px;
+    }
+    
+    h1::before {
+        width: 50px;
+        height: 50px;
+    }
+    #view-designs {
+        font-size: 70%;
+        margin-top: 0;
+        margin-left: 0;
+        padding: 0 0 0 0;
+    }
+    #view-designs button {
+        width: 100%;
+        
+    }
+    body {
+        font-size: 75%;
+    }
     .authors {
-         
+        
     }
     .links {
 
