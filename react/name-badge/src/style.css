@@ -1,0 +1,44 @@
+* {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    padding: 5px 0 5px 0;
+    margin: 0;
+    width: 100%;
+    color: whitesmoke;
+    background-color: rgb(32, 32, 32);
+}
+
+p {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+}
+
+.badge {
+    display: block;
+    border: 1px solid black;
+    box-shadow: 3px 3px 3px;
+    width: min-content;
+    margin-bottom: 10px;
+}
+
+.information {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 400px 400px;
+}
+
+#aboutYou {
+    width: 100%;
+    height: 150px;
+    word-wrap: normal;
+}
+
+#submitButton {
+    margin-bottom: 10px;
+}
