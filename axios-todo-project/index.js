@@ -4,9 +4,6 @@ function getData(){
         .catch(err => console.log(err))
 }
 
-
-
-
 function listData(data){
     clearList()
 
