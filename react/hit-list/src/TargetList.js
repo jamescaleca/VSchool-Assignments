@@ -9,10 +9,10 @@ class TargetList extends Component {
             targets: [],
             name: "",
             image: "",
+            completed: false
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        // this.handleCheck = this.handleCheck.bind(this)
     }
     componentDidMount(){
         fetch("https://raw.githubusercontent.com/VSchool/vschool-api/master/static/hitlist.json")
@@ -24,46 +24,32 @@ class TargetList extends Component {
         })
     }
 
-    // handleCheck(id) {
-    //     this.setState(prevState => {
-    //         const updatedList = prevState.targets.map(target => {
-    //             if (target.id === id) {
-    //                 target.completed = !target.completed
-    //             }
-    //             return target
-    //         })
-    //         return {
-    //             targets: updatedList
-    //         }
-    //     })
-    // }
-
     handleChange(event) {
         event.preventDefault()
-        const {name, value} = event.target
-        this.setState({
-            [name]: value
-        })
+        const {name, value, type, completed} = event.target
+        type === "checkbox" ? this.setState({[completed]: true}) : this.setState({[name]: value})
+        
     }
 
     handleSubmit(event) {
-        this.setState(prevState => {
+        event.preventDefault()
+        this.setState(elseState => {
             return {
                 targets: [
-                    ...prevState.targets, {...prevState}
+                    ...elseState.targets, {...elseState}
                 ],
                 name: "",
-                image: ""
+                image: "",
+                completed: false
             }
         })
-        event.preventDefault()
     }
 
     render() {
         const mappedTargets = this.state.targets.map((target, index) => {
-            return <TargetComponent key={index} {...target} completed={false} handleCheck={this.handleCheck} />
+            return <TargetComponent key={index} {...target} completed={false} handleChange={this.handleChange} />
         })
-        console.log({mappedTargets})
+        // console.log({mappedTargets})
         return (
             <div>
                 <ul style={{

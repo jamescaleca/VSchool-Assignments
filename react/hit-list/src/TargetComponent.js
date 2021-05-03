@@ -29,10 +29,11 @@ function TargetComponent(props) {
                     }}>
                         <p style={props.completed ? completedStyle: null}>{props.name}</p>
                         <input 
+                            name="checkbox"
                             type="checkbox" 
                             style={{marginLeft: "10px"}} 
-                            checked={props.completed} 
-                            // onChange={props.handleCheck(props.id)}
+                            onChange={() => props.handleChange}
+                            checked={props.completed}
                         />
                         <br/>
                     </figcaption>
