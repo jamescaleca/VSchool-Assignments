@@ -6,10 +6,7 @@ class TargetList extends Component {
     constructor() {
         super()
         this.state = {
-            targets: [],
-            name: "",
-            image: "",
-            completed: false
+            targets: []
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -20,7 +17,9 @@ class TargetList extends Component {
             .then((response) => {
                 this.setState({
                     targets: response
+
             })
+            
         })
     }
 
@@ -33,23 +32,23 @@ class TargetList extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        this.setState(elseState => {
+        this.setState(prevState => {
             return {
                 targets: [
-                    ...elseState.targets, {...elseState}
+                    ...prevState.targets, {...prevState}
                 ],
+                
                 name: "",
                 image: "",
-                completed: false
             }
         })
     }
 
     render() {
         const mappedTargets = this.state.targets.map((target, index) => {
-            return <TargetComponent key={index} {...target} completed={false} handleChange={this.handleChange} />
+            return <TargetComponent key={index} completed={false} handleChange={this.handleChange} {...target} />
         })
-        // console.log({mappedTargets})
+        console.log({mappedTargets})
         return (
             <div>
                 <ul style={{
@@ -66,7 +65,7 @@ class TargetList extends Component {
                 <form id="form" name="new-target" onSubmit={this.handleSubmit}>
                     <input 
                         style={{margin: "10px"}}
-                        value={this.state.name}
+                        value={mappedTargets.name}
                         type="text" 
                         name="name" 
                         placeholder="Name" 
@@ -75,7 +74,7 @@ class TargetList extends Component {
                     <br/>
                     <input 
                         style={{margin: "10px"}}
-                        value={this.state.image}
+                        value={mappedTargets.image}
                         type="text" 
                         name="image" 
                         placeholder="Image" 
