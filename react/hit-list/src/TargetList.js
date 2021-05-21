@@ -125,6 +125,7 @@ class TargetList extends Component {
         event.preventDefault()
         const {name, value, type, checked} = event.target
         this.setState({[name]: value})
+        console.log()
         // checked ? this.setState({[completed]: true}) : this.setState({[name]: value})
     }
     //wouldn't let me use this function unlessn it was an arrow function
