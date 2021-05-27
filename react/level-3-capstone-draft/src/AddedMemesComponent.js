@@ -18,6 +18,7 @@ class AddedMemesComponent extends Component {
     }
     
     render() {
+        const {editTopText, editBottomText} = this.state
         return (
             this.props.editMode ? 
             <div>
@@ -29,15 +30,15 @@ class AddedMemesComponent extends Component {
                     <input 
                         name="editTopText"
                         type="text"
-                        placeholder={this.state.editTopText}
-                        value={this.state.editTopText}
+                        placeholder={editTopText}
+                        value={editTopText}
                         onChange={this.handleChange}
                     />
                     <input 
                         name="editBottomText"
                         type="text"
-                        placeholder={this.state.editBottomText}
-                        value={this.state.editBottomText}
+                        placeholder={editBottomText}
+                        value={editBottomText}
                         onChange={this.handleChange}
                     />
                     <input 

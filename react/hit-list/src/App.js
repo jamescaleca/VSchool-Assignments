@@ -2,13 +2,7 @@ import React from "react"
 import TargetList from "./TargetList"
 
 class App extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            loading: false
-        }
-    }
-
+    state = {loading: false}
     
     render() {
         const text = this.state.loading ? "Loading..." : <TargetList />

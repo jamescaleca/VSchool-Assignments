@@ -2,29 +2,22 @@ import React from "react"
 import Badge from "./Badge"
 
 class App extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            firstName: "",
-            lastName: "",
-            email: "",
-            birthPlace: "",
-            phone: "",
-            favFood: "",
-            aboutYou: "",
-            badgeArr: []
-        }
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-        this.handleNum = this.handleNum.bind(this)
+    state = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        birthPlace: "",
+        phone: "",
+        favFood: "",
+        aboutYou: "",
+        badgeArr: []
     }
+    
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         this.setState(prevState => {
             return {
-                badgeArr: [
-                    ...prevState.badgeArr, {...prevState}
-                ],
+                badgeArr: [...prevState.badgeArr, {...prevState}],
                 firstName: "",
                 lastName: "",
                 email: "",
@@ -37,32 +30,27 @@ class App extends React.Component {
         event.preventDefault()
     }
 
-    handleChange(event) {
+    handleChange = (event) => {
         event.preventDefault()
         const {name, value} = event.target
-        this.setState({
-            [name]: value
-        })
+        this.setState({ [name]: value })
     }
 
-    handleNum(event) {
+    handleNum = (event) => {
         let phoneNumber = event.target.value;
-        if (!Number(phoneNumber)) {
-            return
-        }
-        this.setState({
-            [event.target.name]: phoneNumber
-        })
+        if (!Number(phoneNumber)) {return}
+        this.setState({ [event.target.name]: phoneNumber })
     }
 
-    render() {
-        const badges = this.state.badgeArr.map((badge) => { return <Badge key={this.state} {...badge} />})
+    render () {
+        const badges = this.state.badgeArr.map((badge) => { return <Badge key={this.state} {...badge} /> })
+        const {firstName, lastName, email, birthPlace, phone, favFood, aboutYou} = this.state
         return (
             <div>
                 <form id="form" onSubmit={this.handleSubmit}>
                     <input 
                         style={{width:"200px"}}
-                        value={this.state.firstName}
+                        value={firstName}
                         type="name" 
                         name="firstName" 
                         placeholder="First Name"
@@ -72,7 +60,7 @@ class App extends React.Component {
                     />
                     <input 
                         style={{width:"200px"}}
-                        value={this.state.lastName}
+                        value={lastName}
                         type="name" 
                         name="lastName"
                         placeholder="Last Name"
@@ -83,7 +71,7 @@ class App extends React.Component {
                     <br />
                     <input
                         style={{width:"200px"}}
-                        value={this.state.email}
+                        value={email}
                         type="text" 
                         name="email"
                         placeholder="Email"
@@ -93,7 +81,7 @@ class App extends React.Component {
                     />
                     <input 
                         style={{width:"200px"}}
-                        value={this.state.birthPlace}
+                        value={birthPlace}
                         type="text" 
                         name="birthPlace"
                         placeholder="Place of Birth"
@@ -104,7 +92,7 @@ class App extends React.Component {
                     <br />
                     <input 
                         style={{width:"200px"}}
-                        value={this.state.phone}
+                        value={phone}
                         type="tel" 
                         name="phone"
                         placeholder="Phone"
@@ -114,7 +102,7 @@ class App extends React.Component {
                     />
                     <input 
                         style={{width:"200px"}}
-                        value={this.state.favFood}
+                        value={favFood}
                         type="text" 
                         name="favFood"
                         placeholder="Favorite Food"
@@ -125,7 +113,7 @@ class App extends React.Component {
                     <br />
                     <textarea 
                         style={{height:"100px", width:"400px"}}
-                        value={this.state.aboutYou} 
+                        value={aboutYou} 
                         type="text"
                         name="aboutYou"
                         placeholder="Tell us about yourself"

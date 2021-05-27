@@ -21,12 +21,6 @@ class App extends Component {
             name: "",
             id: 0
         }
-        this.handleChange = this.handleChange.bind(this)
-        this.handlePreview = this.handlePreview.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleCancel = this.handleCancel.bind(this)
-        this.handleDelete = this.handleDelete.bind(this)
-        this.handleEdit = this.handleEdit.bind(this)
         this.stopEditing = this.stopEditing.bind(this)
     }
 
@@ -89,9 +83,7 @@ class App extends Component {
             return (
                 this.state.previewMode === true ? 
                 {
-                    addedMemes: [
-                        ...prevState.addedMemes, this.state.previewMeme
-                    ],
+                    addedMemes: [...prevState.addedMemes, this.state.previewMeme],
                     topText: "",
                     bottomText: "",
                     previewMode: !this.state.previewMode,
@@ -100,18 +92,14 @@ class App extends Component {
                 }
                 : this.state.editMode === true ?
                 {
-                    addedMemes: [
-                        ...prevState.addedMemes, {...this.state.currentEditMeme},
-                    ],
+                    addedMemes: [...prevState.addedMemes, {...this.state.currentEditMeme}],
                     topText: "",
                     bottomText: "",
                     editMode: !this.state.editMode
                 }
                 : this.state.previewMode === false && this.state.editMode === false ?
                 {
-                    addedMemes: [
-                        prevState.addedMemes,
-                    ],
+                    addedMemes: [prevState.addedMemes],
                     topText: "",
                     bottomText: "",
                 }
@@ -167,9 +155,10 @@ class App extends Component {
                 </div>
             )
         })
+        const {topText, bottomText, memeUrl, name, randomNum, previewMode} = this.state
         return (
             <div>
-                {this.state.previewMode ?
+                {previewMode ?
                     <PreviewMeme 
                         handleSubmit={this.handleSubmit}
                         handleCancel={this.handleCancel}
@@ -182,12 +171,12 @@ class App extends Component {
                     :
                     <div>
                         <CurrentMeme 
-                            id={this.state.randomNum} 
-                            key={this.state.randomNum} 
-                            memeUrl={this.state.memeUrl}
-                            topText={this.state.topText}
-                            bottomText={this.state.bottomText}
-                            name={this.state.name}
+                            id={randomNum} 
+                            key={randomNum} 
+                            memeUrl={memeUrl}
+                            topText={topText}
+                            bottomText={bottomText}
+                            name={name}
                         />
                         <button onClick={this.randomNumberGenerator}>Refresh</button>
                         <form id="form" name="new-meme" onSubmit={this.handlePreview}>
@@ -195,7 +184,7 @@ class App extends Component {
                                 placeholder="Top Text"
                                 type="text"
                                 name="topText"
-                                value={this.state.topText}
+                                value={topText}
                                 onChange={this.handleChange} 
                             />
                             <br/>
@@ -203,7 +192,7 @@ class App extends Component {
                                 placeholder="Bottom Text"
                                 type="text"
                                 name="bottomText"
-                                value={this.state.bottomText}
+                                value={bottomText}
                                 onChange={this.handleChange}
                             />
                             <br/>

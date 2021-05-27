@@ -2,10 +2,13 @@ const readline = require('readline-sync');
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 caesarCipher = (str, num) => {
+    //In case the input number is > 26 or < 0
     num = num % 26;
+
     let newStr = '';
     for(let i = 0; i < input.length; i++) {
         let currentLetter = input[i]
+        //For white space in input
         if(currentLetter === '') {
             newStr += currentLetter;
             continue;
@@ -14,9 +17,7 @@ caesarCipher = (str, num) => {
         let newIndex = currentIndex + num;
         if(newIndex > 25) newIndex = newIndex - 26;
         if(newIndex < 0) newIndex = newIndex + 26;
-        if(str[i] === str[i].toUpperCase()) {
-            newStr += alphabet[newIndex].toUpperCase();
-        }
+        if(str[i] === str[i].toUpperCase()) {newStr += alphabet[newIndex].toUpperCase();}
         else newStr += alphabet[newIndex];
     }
     return newStr;

@@ -1,117 +1,13 @@
-// import React, {Component} from "react"
-// import TargetComponent from "./TargetComponent"
-
-
-// class TargetList extends Component {
-//     constructor() {
-//         super()
-//         this.state = {
-//             targets: [],
-//         }
-//         this.handleSubmit = this.handleSubmit.bind(this)
-//         this.handleChange = this.handleChange.bind(this)
-//     }
-//     componentDidMount(){
-//         fetch("https://raw.githubusercontent.com/VSchool/vschool-api/master/static/hitlist.json")
-//             .then(response => response.json())
-//             .then((response) => {
-//                 this.setState({
-//                     targets: response
-
-//             })
-            
-//         })
-//     }
-
-//     handleChange(event) {
-//         event.preventDefault()
-//         const {name, value, type, checked} = event.target
-//         checked ? this.setState({[completed]: true}) : this.setState({[name]: value})
-        
-//     }
-
-//     handleSubmit(event) {
-//         event.preventDefault()
-//         this.setState(prevState => {
-//             return {
-//                 targets: [
-//                     ...prevState.targets, {...prevState}
-//                 ],
-                
-//                 name: "",
-//                 image: "",
-//                 completed: true
-//             }
-//         })
-//     }
-
-//     render() {
-//         const mappedTargets = this.state.targets.map((target, index) => {
-//             return <TargetComponent key={index} completed={false} handleChange={this.handleChange} {...target} />
-//         })
-//         console.log(this.state)
-//         return (
-//             <div>
-//                 <ul style={{
-//                     listStyle: "none", 
-//                     display: "grid", 
-//                     gridTemplateColumns: "auto auto auto", 
-//                     gridTemplateRows: "auto auto auto",
-//                     padding: "0px"
-//                 }}>
-//                     {mappedTargets}
-//                 </ul>
-
-//                 <h1>New target:</h1>
-//                 <form id="form" name="new-target" onSubmit={this.handleSubmit}>
-//                     <input 
-//                         style={{margin: "10px"}}
-//                         value={mappedTargets.name}
-//                         type="text" 
-//                         name="name" 
-//                         placeholder="Name" 
-//                         onChange={this.handleChange}
-//                     />
-//                     <br/>
-//                     <input 
-//                         style={{margin: "10px"}}
-//                         value={mappedTargets.image}
-//                         type="text" 
-//                         name="image" 
-//                         placeholder="Image" 
-//                         onChange={this.handleChange}
-//                     />
-//                     <br/>
-//                     <input 
-//                         style={{margin: "10px"}}
-//                         id="submitButton"
-//                         type="submit"
-//                         value="Submit"
-//                     />
-//                 </form>
-//             </div>
-            
-//         )
-//     }
-// }
-
-// export default TargetList
-
 import React, {Component} from "react"
 import TargetComponent from "./TargetComponent"
 class TargetList extends Component {
-    constructor() {
-        super()
-        this.state = {
-            targets: [],
-            name: "",
-            image:"",
-            completed: false
-        }
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-        // this.handleInputClick = this.handleInputClick(this)
+    state = {
+        targets: [],
+        name: "",
+        image:"",
+        completed: false
     }
+    
     componentDidMount(){
         fetch("https://raw.githubusercontent.com/VSchool/vschool-api/master/static/hitlist.json")
             .then(response => response.json())
@@ -121,14 +17,11 @@ class TargetList extends Component {
             })
         })
     }
-    handleChange(event) {
+    handleChange = (event) => {
         event.preventDefault()
-        const {name, value, type, checked} = event.target
+        const {name, value} = event.target
         this.setState({[name]: value})
-        console.log()
-        // checked ? this.setState({[completed]: true}) : this.setState({[name]: value})
     }
-    //wouldn't let me use this function unlessn it was an arrow function
     handleInputClick = (id) => {
         let filteredTarget = this.state.targets.find(target => target.id === id)
         let indexFinder = this.state.targets.indexOf(filteredTarget)
@@ -138,13 +31,11 @@ class TargetList extends Component {
         this.setState({targets: newTargets})
         return console.log(id) 
     }
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault()
         this.setState(prevState => {
             return {
-                targets: [
-                    ...prevState.targets, {...prevState}
-                ],
+                targets: [...prevState.targets, {...prevState}],
                 name: "",
                 image: "",
                 completed: true
@@ -155,7 +46,6 @@ class TargetList extends Component {
         const mappedTargets = this.state.targets.map((target, index) => {
             return <TargetComponent key={index} handleInputClick={this.handleInputClick} handleChange={this.handleChange} {...target} />
         })
-        console.log(this.state)
         return (
             <div>
                 <ul style={{
