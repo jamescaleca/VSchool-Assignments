@@ -5,11 +5,11 @@ function Navbar(props) {
     return (
         <ThemeConsumer>
             {context => (
-                <header className={`${context.theme}-theme`}>
+                <header className={`${context.theme}-theme-header`}>
                     <nav>
-                        <a href="">Home</a>
-                        <a href="">About</a>
-                        <a href="">Contact</a>
+                        <a href="" className={`${context.theme}-theme-header`}>Home</a>
+                        <a href="" className={`${context.theme}-theme-header`}>About</a>
+                        <a href="" className={`${context.theme}-theme-header`}>Contact</a>
                     </nav>
                 </header>
             )}

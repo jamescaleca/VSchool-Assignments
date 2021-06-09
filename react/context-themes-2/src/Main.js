@@ -5,7 +5,7 @@ function Main(props) {
     return (
         <ThemeConsumer>
             {context => (
-                <div>
+                <div className={`${context.theme}-theme`}>
                     <h1>What a cool website!</h1>
                     <p>Yet another sick nasty way to add responsiveness</p>
                     <h3>Good stuff</h3>

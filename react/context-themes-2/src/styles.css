@@ -3,28 +3,72 @@ body {
     padding: 0;
 }
 
+a {
+    margin-right: 400px;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
 header {
     padding: 20px;
+    border-bottom: 1px solid black;
 }
 
 button {
+    border: 1px solid black;
+    border-radius: 25%;
     padding: 10px;
-    border: none;
-    margin: 10px;
+    margin-left: 20px;
 }
 
 footer {
     display: block;
-    margin-top: 30%;
-    color: red;
+    margin-top: 33%;
+    padding-left: 20px;
+    padding-top: 30px;
+}
+
+h1 {
+    margin-left: 20px;
+}
+
+h3 {
+    margin-left: 20px;
+}
+
+p {
+    margin-left: 20px;
 }
 
 .dark-theme {
+    background-color: rgb(36, 36, 36);
+    color: rgb(240, 170, 40);
+    border-color: white;
+}
+
+.dark-theme-header {
     background-color: #333333;
-    color: whitesmoke;
+    color: cornflowerblue;
+    border-color: cornflowerblue;
+}
+
+.dark-theme-footer {
+    background-color: #333333;
 }
 
 .light-theme {
-    background-color: whitesmoke;
+    background-color: rgb(224, 224, 224);
     color: #333333;
+    border-color: black;
+}
+
+.light-theme-header {
+    background-color: cornflowerblue;
+    color: #333333;
+    border-color: black;
+}
+
+.light-theme-footer {
+    background-color: whitesmoke;
 }

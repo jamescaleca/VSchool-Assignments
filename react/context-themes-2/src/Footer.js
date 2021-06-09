@@ -5,7 +5,7 @@ function Footer(props) {
     return (
         <ThemeConsumer>
             {context => (
-                <footer>
+                <footer className={`${context.theme}-theme-footer`}>
                     The most amazing footer
                 </footer>
             )}
