@@ -2,11 +2,11 @@ import React from "react"
 import ReactDOM from "react-dom"
 import "./styles.css"
 import App from "./App"
-import {ThemeProvider} from "./thingContext"
+import {ThingProvider} from "./thingContext"
 
 ReactDOM.render(
-    <ThemeProvider>
+    <ThingProvider>
         <App /> 
-    </ThemeProvider>,
+    </ThingProvider>,
     document.getElementById("root")
 )
