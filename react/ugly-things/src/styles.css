@@ -15,3 +15,7 @@ input[name="submitButton"] {
     color: rgb(231, 231, 15);
     padding: 10px;
 }
+
+button {
+    margin-right: 10px;
+}
