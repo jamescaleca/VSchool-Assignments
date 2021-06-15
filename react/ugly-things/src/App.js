@@ -2,29 +2,40 @@ import React from "react"
 import "./styles.css"
 import Form from "./Form"
 import {ThingConsumer} from "./thingContext"
+import DisplayThings from "./DisplayThings"
+import EditThing from "./EditThing"
 
 function App() {
     return (
-        <div>
-            <Form />
-            <ul>
-                <ThingConsumer>
-                    {({things, handleDelete}) => (
-                        things.map(thing =>
-                            <li style={{listStyle: "none"}}>
-                                <h2>{thing.title}</h2>
-                                <img style={{height: "25%", width: "25%"}}src={thing.imgUrl} alt={thing.title}/>
-                                <h4>{thing.description}</h4>
-                                <h3>{thing._id}</h3>
-                                <button onClick={() => handleDelete(thing._id)}>Delete</button>
-                                <button>Edit</button>
-                                <hr/>
-                            </li>
-                        )
-                    )}
-                </ThingConsumer>
-            </ul>
-        </div>
+        <ThingConsumer>
+            {context => (
+                context.editMode ?
+                <EditThing 
+                    editMode={context.editMode}
+                    currentEditThing={context.currentEditThing}
+                    handleChange={context.handleChange}
+                    editThing={context.editThing}
+                    handlePut={context.handlePut}
+                    editTitle={context.editTitle}
+                    editDescription={context.editDescription}
+                    editImgUrl={context.editImgUrl}
+                />
+                : context.editMode === false ?
+                <div>
+                    <Form />
+                    <ul>
+                        <DisplayThings 
+                            things={context.things}
+                            handleDelete={context.handleDelete}
+                            editThing={context.editThing}
+                        />
+                    </ul>
+
+                </div>
+                :
+                null
+            )}
+        </ThingConsumer>
     )
 }
 

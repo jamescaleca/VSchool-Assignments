@@ -7,17 +7,23 @@ class ThingProvider extends Component {
         things: [],
         title: "",
         description: "",
-        imgUrl: ""
+        imgUrl: "",
+        editMode: false,
+        editTitle: "",
+        editDescription: "",
+        editImgUrl: "",
+        currentEditThing: {}
     }
 
     getThings = () => {
         axios.get("https://api.vschool.io/jamescaleca/thing")
             .then(res => {
                 const things = res.data;
-                this.setState({things})
+                this.setState({things: [...things]})
             }
         )
     }
+
     componentDidMount() {
         this.getThings()
     }
@@ -36,8 +42,21 @@ class ThingProvider extends Component {
             imgUrl: this.state.imgUrl
         }
         console.log(newThing)
-        axios.post("https://api.vschool.io/jamescaleca/thing", newThing)
-            .then(res => console.log(res.data) )
+        axios.post(`https://api.vschool.io/jamescaleca/thing/`, newThing)
+            .then(res => this.getThings())
+        return
+    }
+
+    editSubmit = (thingId) => {
+        let editedThing = {
+            title: this.state.editTitle,
+            description: this.state.editDescription,
+            imgUrl: this.state.editImgUrl,
+            _id: thingId
+        }
+        console.log(editedThing)
+        axios.put(`https://api.vschool.io/jamescaleca/thing/${thingId}`, editedThing)
+            .then(() => this.getThings())
     }
 
     handleDelete = (thingId) => {
@@ -48,14 +67,35 @@ class ThingProvider extends Component {
         this.setState([ ...things ])
     }
 
+    editThing = (thingId) => {
+        let filteredThing = this.state.things.filter(thing => {return thing._id === thingId})
+        let newThings = this.state.things
+        let indexFinder = newThings.indexOf(filteredThing[0])
+        let currentEditThing1 = newThings[indexFinder]
+        this.setState((prevState) => {
+            return({
+                currentEditThing: currentEditThing1,
+                editMode: !prevState.editMode,
+            })
+        })
+        console.log(this.state.editMode)
+        newThings[indexFinder] = filteredThing[0]
+    }
+
     render() {
-        const {things} = this.state
         return (
             <Provider value={{
-                things, 
+                things: this.state.things, 
+                currentEditThing: this.state.currentEditThing,
+                editMode: this.state.editMode,
+                editTitle: this.state.editTitle,
+                editDescription: this.state.editDescription,
+                editImgUrl: this.state.editImgUrl,
                 handleChange: this.handleChange, 
                 handleSubmit: this.handleSubmit, 
-                handleDelete: this.handleDelete
+                handleDelete: this.handleDelete,
+                editThing: this.editThing,
+                editSubmit: this.editSubmit,
             }}>
                 {this.props.children}
             </Provider>
