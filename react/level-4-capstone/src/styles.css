@@ -1,0 +1,44 @@
+body {
+    background-color: whitesmoke;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* .navbar-li {
+    float: right;
+} */
+
+li .navbar-links, button {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: right;
+}
+
+li .navbar-links:hover {
+    background-color: #111;
+}
+
+.search-bar {
+    overflow: hidden;
+    background-color: #333;
+    border: 1px solid black;
+    margin-top: 50px;
+    text-align: center;
+    height: 200px;
+    width: 700px;
+}
+
+.search-bar input[type=text] {
+    padding: 6px;
+    width: 500px;
+    margin-top: 40px;
+}
