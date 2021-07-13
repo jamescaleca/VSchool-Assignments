@@ -5,7 +5,6 @@ const RecipesContext = createContext()
 
 function RecipesContextProvider(props) {
     const [recipesData, setRecipesData] = useState([])
-    const [singleRecipe, setSingleRecipe] = useState("")
 
     const getAllRecipes = () => {
         axios
@@ -17,22 +16,12 @@ function RecipesContextProvider(props) {
             .catch(error => console.log(error))
     }
 
-    const getOneRecipe = (id) => {
-        axios
-            .get(`https://api.punkapi.com/v2/beers/${id}`)
-            .then(response => {
-                const singleRecipe = response.data
-                setSingleRecipe(singleRecipe)
-            })
-            .catch(error => console.log("oops!"))
-    }
-
     useEffect(() => {
-        getAllRecipes()
+        getAllRecipes() 
     }, [])
 
     return (
-        <RecipesContext.Provider value={{recipesData, singleRecipe, getOneRecipe}}>
+        <RecipesContext.Provider value={{recipesData}}>
             {props.children}
         </RecipesContext.Provider>
     )
