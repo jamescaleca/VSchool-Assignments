@@ -14,7 +14,7 @@ ul {
     float: right;
 } */
 
-li .navbar-links, button {
+li .navbar-links {
     display: block;
     color: white;
     text-align: center;
