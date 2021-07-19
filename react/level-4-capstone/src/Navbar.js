@@ -4,27 +4,39 @@ import { ThemeContext } from "./contexts/themeContext"
 import "./styles.css"
 import BeerIcon from "./assets/beer-icon.png"
 
-function Navbar(props) {
+function Navbar() {
     const {theme, toggleTheme} = useContext(ThemeContext)
     return (
-        <div>
-            <ul className={`${theme}-theme`}>
-                <li>
-                    <button className="theme-button"
-                        onClick={toggleTheme}
-                        
-                    >
-                        {theme === "light" ? "Light" : "Dark"} Theme
-                    </button>
-                </li>
+        <header className={`${theme}--bg-light text-right`}>
+            <nav className="container container--narrow">
+                <ul className={`${theme}--nav-ul nav-ul`}>
+                    <li>
+                        <button 
+                            className={`${theme}-theme-button`}
+                            onClick={toggleTheme}
+                        >{theme === "light" ? "Light" : "Dark"} Theme
+                        </button>
+                    </li>
 
-                <li><Link className="navbar-links" to="/about">About</Link></li>
+                    <li>
+                        <Link className={`${theme}-theme-nav-link`} to="/about">About</Link>
+                    </li>
 
-                <li><Link className="navbar-links" to="/">Home</Link></li>
+                    <li>
+                        <Link className={`${theme}-theme-nav-link`} to="/">Home</Link>
+                    </li>
 
-                <li><img  alt="BeerIcon" src={BeerIcon} style={{height: "3%", width: "3%", float: "left"}}></img></li>
-            </ul>
-        </div>
+                    <li>
+                        <img 
+                            className={`nav-icon img-contain`}
+                            alt="BeerIcon" 
+                            src={BeerIcon} 
+                        ></img>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
     )
 }
 

@@ -1,7 +1,10 @@
-import React, { useEffect, useState, createContext } from "react"
+import React, { useEffect, useState, createContext, useContext } from "react"
 import { Link } from "react-router-dom"
 import ErrorPage from "../ErrorPage"
+import { ThemeContext } from "./themeContext"
 import axios from "axios"
+import "../styles.css"
+
 
 const RecipesContext = createContext()
 
@@ -9,6 +12,7 @@ function RecipesContextProvider(props) {
     const [recipesData, setRecipesData] = useState([])
     const [search, setSearch] = useState('')
     const [searchData, setSearchData] = useState([])
+    const {theme} = useContext(ThemeContext)
 
     // Getting all recipes from the API
 
@@ -27,11 +31,16 @@ function RecipesContextProvider(props) {
     }, [])
 
     const allRecipes = recipesData.map(recipe => (
-        <li key={recipe.id}>
-            <h1>{recipe.id}</h1>
-            <img style={{height: "100px", width: "100px"}} alt={recipe.name} src={recipe.image_url}></img>
-            <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
-            <p>{recipe.tagline}</p>
+        <li className="all-rec-li tile" key={recipe.id}>
+            <img 
+                className="rec-thumb img-contain"
+                alt={recipe.name} 
+                src={recipe.image_url}
+            ></img>
+            <br />
+            <Link to={`/recipes/${recipe.id}`} className={`${theme}-to-rec-detail text-right`}>{recipe.name}</Link>
+            <br />
+            <p className={`${theme}-tagline text-right`}>{recipe.tagline}</p>
         </li>
     ))
 
@@ -47,18 +56,22 @@ function RecipesContextProvider(props) {
     }
 
     const searchResults = searchData.length > 0 ?
-
     searchData.map(recipe => (
-        <li key={recipe.id}>
-            <h1>{recipe.id}</h1>
-            <img style={{height: "100px", width: "100px"}} alt={recipe.name} src={recipe.image_url}></img>
-            <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
-            <p>{recipe.tagline}</p>
+        <li className="search-rec-li tile" key={recipe.id}>
+            <img 
+                className="rec-thumb img-contain" 
+                alt={recipe.name} 
+                src={recipe.image_url}
+            ></img>
+            <br />
+            <Link to={`/recipes/${recipe.id}`} className={`${theme}-to-rec-detail text-right`}>{recipe.name}</Link>
+            <br />
+            <p className={`${theme}-tagline text-right`}>{recipe.tagline}</p>
         </li>
     ))
     :
     <>
-        <h3>Sorry, looks like we have nothing matching that food pairing</h3>
+        <h3 className={`${theme}-theme-text text-center`}>Sorry, looks like we have no recipes matching that food pairing.</h3>
     </>
 
     return (
@@ -70,8 +83,7 @@ function RecipesContextProvider(props) {
             setSearch, 
             searchData, 
             setSearchData
-        }}>
-            {props.children}
+        }}>{props.children}
         </RecipesContext.Provider>
     )
 }

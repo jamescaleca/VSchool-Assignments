@@ -1,13 +1,24 @@
 import React from "react"
-import Navbar from "./Navbar"
-import Page from "./Page"
+import { Switch, Route } from "react-router-dom"
+import About from "./About"
+import Home from "./Home"
+import RecipesList from "./recipes/RecipesList"
+import SingleRecipe from "./recipes/SingleRecipe"
+import FilteredRecipes from "./recipes/FilteredRecipes"
+import "./styles.css"
+
 
 function App() {
     return (
-        <div>
-            <Navbar />
-            <Page />
-        </div>
+        <>
+            <Switch>
+                <Route exact path="/"><Home /></Route>
+                <Route exact path="/about"><About /></Route>
+                <Route exact path="/recipes"><RecipesList /></Route>
+                <Route exact path="/recipes/:recipeId"><SingleRecipe /></Route>
+                <Route exact path="/search"><FilteredRecipes /></Route>
+            </Switch>
+        </>
     )
 }
 

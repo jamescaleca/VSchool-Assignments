@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import "../styles.css"
 
 const ThemeContext = React.createContext()
 
@@ -7,6 +8,7 @@ function ThemeContextProvider(props) {
 
     function toggleTheme() {
         setTheme(prevTheme => prevTheme === "light" ? "dark" : "light")
+        console.log(theme)
     }
 
     return (
