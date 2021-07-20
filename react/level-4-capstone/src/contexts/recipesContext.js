@@ -31,16 +31,16 @@ function RecipesContextProvider(props) {
     }, [])
 
     const allRecipes = recipesData.map(recipe => (
-        <li className="all-rec-li tile" key={recipe.id}>
+        <li className="tile" key={recipe.id}>
             <img 
                 className="rec-thumb img-contain"
                 alt={recipe.name} 
                 src={recipe.image_url}
             ></img>
             <br />
-            <Link to={`/recipes/${recipe.id}`} className={`${theme}-to-rec-detail text-right`}>{recipe.name}</Link>
+            <Link to={`/recipes/${recipe.id}`} className={`${theme}-to-rec-detail text-center`}>{recipe.name}</Link>
             <br />
-            <p className={`${theme}-tagline text-right`}>{recipe.tagline}</p>
+            <p className={`${theme}-tagline text-center`}>{recipe.tagline}</p>
         </li>
     ))
 
@@ -64,9 +64,9 @@ function RecipesContextProvider(props) {
                 src={recipe.image_url}
             ></img>
             <br />
-            <Link to={`/recipes/${recipe.id}`} className={`${theme}-to-rec-detail text-right`}>{recipe.name}</Link>
+            <Link to={`/recipes/${recipe.id}`} className={`${theme}-to-rec-detail text-center`}>{recipe.name}</Link>
             <br />
-            <p className={`${theme}-tagline text-right`}>{recipe.tagline}</p>
+            <p className={`${theme}-tagline text-center`}>{recipe.tagline}</p>
         </li>
     ))
     :

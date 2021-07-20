@@ -63,6 +63,7 @@ nav {
 }
 
 .dark-theme-nav-link {
+    margin-right: .5rem;
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
@@ -73,6 +74,7 @@ nav {
 }
 
 .light-theme-nav-link {
+    margin-right: .5rem;
     color: black;
     text-decoration: none;
     font-size: 1.2rem;
@@ -81,12 +83,14 @@ nav {
 }
 
 .dark-theme-button {
+    margin-right: .5rem;
     background-color: var(--clr-primary-400);
     border: 1px solid var(--clr-neutral-100);
     color: var(--clr-primary-200);
 }
 
 .light-theme-button {
+    margin-right: .5rem;
     background-color: var(--clr-primary-200);
     border: 1px solid var(--clr-neutral-900);
     color: var(--clr-primary-400);
@@ -95,12 +99,10 @@ nav {
 .nav-icon {
     position: absolute;
     background: transparent;
-    top: 1rem;
-    left: 1rem;
-    margin-left: 1em;
-    /* display: block; */
+    top: .5rem;
+    left: .5rem;
+    margin-left: 1rem;
     width: 2.5em;
-    /* border: 1px solid red; */
 }
 
 .img-contain {
@@ -112,13 +114,13 @@ nav {
     color: #000;
 }
 
-.nav-toggle:checked ~ .nav {
+/* .nav-toggle:checked ~ .nav {
     display: block;
 }
 
 .nav-toggle {
     display: none;
-}
+} */
 
 h2,
 h3,
@@ -138,21 +140,14 @@ p {
 header,
 section {
     padding: 1rem 0;
-    @media (min-width: 40em) {
-        header,
-        section {
-            padding: 7rem 0;
-        }
-    }
 }
 
 .container {
-    /* background-color: var(--clr-primary-400); */
     position: relative;
 }
 
 .container--narrow {
-    max-width: 34rem;
+    max-width: 65rem;
 }
 
 .split {
@@ -260,17 +255,22 @@ section {
 }
 
 @media (min-width: 40em) {
-    .split {
-        flex-direction: row;
-    }
-    
     .split > * {
         flex-basis: 100%;
     }
-
-    .split > * + * {
-        margin-left: 2em;
+    header,
+    section {
+        padding: 2rem 0;
     }
+    .tiles {
+        width: 600px;
+        display: inline-block;
+    }
+    .tile {
+        width: 30%;
+        display: inline-block;
+    }
+
 }
 
 .search-bar {
@@ -302,9 +302,10 @@ section {
 
 .rec-thumb {
     margin-top: 1em;
+    margin-bottom: 1em;
     background: transparent;
-    width: 200px;
-    height: 200px;
+    width: 25%;
+    height: auto;
 }
 
 .rec-detail-img {
@@ -315,16 +316,28 @@ section {
 
 .tiles {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .tile {
     border: 1px solid #eee;
     box-shadow: 0 1px 8px 0 rgba(250, 245, 245, 0.63);
-    display: flex;
-    margin: 1rem;
+    margin: .5rem;
     padding-left: 0;
     flex-direction: column;
+    width: 29%;
+    display: flex;
+    flex-shrink: 2;
+    justify-content: center;
 }
+
+.tile > * {
+    justify-content: center;
+
+} 
 
 /* .search-rec-li {
     width: calc(100 / 3);
