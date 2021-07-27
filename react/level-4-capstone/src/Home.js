@@ -12,7 +12,6 @@ function Home() {
     return (
         <>
             <Navbar />
-            
             <section className={`${theme}--bg-primary container`}>
                 <div>
                     <div className="split">

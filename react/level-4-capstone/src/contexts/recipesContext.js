@@ -70,9 +70,9 @@ function RecipesContextProvider(props) {
         </li>
     ))
     :
-    <>
-        <h3 className={`${theme}-theme-text text-center`}>Sorry, looks like we have no recipes matching that food pairing.</h3>
-    </>
+        <>
+            <h3 className={`${theme}-theme-text text-center`}>Sorry, looks like we have no recipes matching that food pairing.</h3>
+        </>
 
     return (
         <RecipesContext.Provider value={{
