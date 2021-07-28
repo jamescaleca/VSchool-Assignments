@@ -51,6 +51,11 @@ inventoryitemsRouter.get('/search/type', (req, res) => {
     res.send(filteredType)
 })
 
+inventoryitemsRouter.get('/search/price', (req, res) => {
+    const maxPrice = req.query.price
+    const minPrice = req.query.price
+})
+
 
 
 module.exports = inventoryitemsRouter
