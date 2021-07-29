@@ -40,4 +40,19 @@ bountyRouter.route('/')
         res.send(`Successfully added ${newBounty.firstName} ${newBounty.lastName} to the database!`)
     })
 
+bountyRouter.route('/:bountyId')
+    .delete((req, res) => {
+        console.log('Delete request received')
+        const bountyId = req.params.bountyId
+        const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId)
+        bounties.splice(bountyIndex, 1)
+        res.send('Successfully deleted bounty')
+    })
+    .put((req, res) => {
+        const bountyId = req.params.bountyId
+        const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId)
+        const updatedBounty = Object.assign(bounties[bountyIndex], req.body)
+        res.send(updatedBounty)
+    })
+
 module.exports = bountyRouter

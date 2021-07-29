@@ -7,8 +7,9 @@ let oldPlant = {
     name: 'cactus',
     type: 'spiny boi'
 }
-pickedoffRouter
-    .put("/oldPlant", (req, res, next) => {
+
+pickedoffRouter.route('/oldPlant')
+    .put((req, res, next) => {
         ///const updatedPlant = Object.assign('/oldPlant', req.body)
         const updatedPlant = {...oldPlant, ...req.body}
         console.log(updatedPlant)

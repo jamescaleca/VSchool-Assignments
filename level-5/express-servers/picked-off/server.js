@@ -3,7 +3,7 @@ const app = express()
 
 app.use('/', express.json())
 
-const oldPlant = {
+let oldPlant = {
     name: 'cactus',
     type: 'spiny boi'
 }
