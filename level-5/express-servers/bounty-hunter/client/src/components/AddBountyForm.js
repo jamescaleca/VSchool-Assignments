@@ -31,7 +31,7 @@ function AddBountyForm(props) {
                 value={inputs.firstName}
                 onChange={handleChange}
                 placeholder='First Name'
-                required='true'
+                required={true}
             />
             <input 
                 type='text'
@@ -40,7 +40,7 @@ function AddBountyForm(props) {
                 value={inputs.lastName}
                 onChange={handleChange}
                 placeholder='Last Name'
-                required='true'
+                required={true}
             />
             <input 
                 type='number'
@@ -49,7 +49,7 @@ function AddBountyForm(props) {
                 value={inputs.bountyAmount}
                 onChange={handleChange}
                 placeholder='0'
-                required='true'
+                required={true}
             /><br />
             <label htmlFor='type'>Type:</label>
             <select 
