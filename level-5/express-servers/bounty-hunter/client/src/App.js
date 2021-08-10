@@ -13,6 +13,12 @@ function App() {
             .catch(err => console.log(err.response.data.errMsg))
     }
 
+    function handleFilter(e) {
+        axios.get(`/bounties/search/type?type=${e.target.value}`)
+            .then(res => setBounties(res.data))
+            .catch(err => console.log(err))
+    }
+
     function addBounty(newBounty) {
         axios.post('/bounties', newBounty)
             .then(res => {
