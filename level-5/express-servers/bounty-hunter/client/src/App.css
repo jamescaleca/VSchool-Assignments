@@ -62,6 +62,16 @@ label {
     color: rgb(180, 180, 180);
 }
 
+.title {
+    color: firebrick;
+    text-align: center;
+}
+
+.subtitle {
+    color: rgb(180, 180, 180);
+    text-align: center;
+}
+
 .new-bounty-form {
     padding-top: 20px;
     padding-bottom: 20px;

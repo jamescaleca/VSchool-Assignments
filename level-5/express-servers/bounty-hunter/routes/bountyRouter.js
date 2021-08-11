@@ -27,7 +27,7 @@ bountyRouter.post('/', (req, res, next) => {
 
 // Get by type
 bountyRouter.get('/search/type', (req, res, next) => {
-    Bounty.find({ genre: req.query.genre }, (err, bounties) => {
+    Bounty.find({ type: req.query.type }, (err, bounties) => {
         if(err){
             res.status(500)
             return next(err)

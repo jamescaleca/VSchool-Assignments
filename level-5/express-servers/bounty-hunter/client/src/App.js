@@ -14,9 +14,13 @@ function App() {
     }
 
     function handleFilter(e) {
+        if(e.target.value === 'reset'){
+            getBounties()
+        } else {
         axios.get(`/bounties/search/type?type=${e.target.value}`)
             .then(res => setBounties(res.data))
             .catch(err => console.log(err))
+        }
     }
 
     function addBounty(newBounty) {
@@ -48,26 +52,42 @@ function App() {
     }, [])
 
     return (
-        <div className='row'>
-            <div className='column'>
-                <AddBountyForm 
-                    submit={addBounty}
-                    btnText='Add Bounty'
-                />
-            </div>
-            <div className='column'>
-                <div className='existing-bounties'>
-                    { bounties.map(bounty => 
-                        <Bounty 
-                            {...bounty} 
-                            key={`${bounty.firstName}${bounty.lastName}`}
-                            deleteBounty={deleteBounty}
-                            editBounty={editBounty}
-                        />) 
-                    }
+        <>
+            <h1 className='title'>Bounty Hunter Database</h1>
+            <h2 className='subtitle'>Your one stop shop for all your bounty hunting needs</h2>
+
+            {/* Add bounty form */}
+            <div className='row'>
+                <div className='column'>
+                    <AddBountyForm 
+                        submit={addBounty}
+                        btnText='Add Bounty'
+                    />
+                </div>
+
+                <div className='column'>
+                    {/* Bounties list */}
+                    <div className='existing-bounties'>
+                        {/* Filter form  */}
+                        <h3>Filter by Type</h3>
+                        <select onChange={handleFilter} className='filter-form'>
+                            <option>- Select a Type -</option>
+                            <option value='Jedi'>Jedi</option>
+                            <option value='Sith'>Sith</option>
+                            <option value='Other'>Other</option>
+                        </select>
+                        { bounties.map(bounty => 
+                            <Bounty 
+                                {...bounty} 
+                                key={`${bounty.firstName}${bounty.lastName}`}
+                                deleteBounty={deleteBounty}
+                                editBounty={editBounty}
+                            />) 
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
