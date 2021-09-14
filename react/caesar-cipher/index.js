@@ -1,17 +1,21 @@
 const readline = require('readline-sync');
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
+const input = readline.question('What phrase would you like to encrypt? ').toLowerCase();
+const shift = parseInt(readline.question('How many letters would you like to shift? '));
+
 caesarCipher = (str, num) => {
     //In case the input number is > 26 or < 0
     num = num % 26;
 
     let newStr = '';
-    for(let i = 0; i < input.length; i++) {
-        let currentLetter = input[i]
+    for(let i = 0; i < str.length; i++) {
+
+        let currentLetter = str[i]
         //For white space in input
-        if(currentLetter === '') {
-            newStr += currentLetter;
-            continue;
+        if(currentLetter === ' ') {
+            newStr += currentLetter
+            continue
         }
         let currentIndex = alphabet.indexOf(currentLetter);
         let newIndex = currentIndex + num;
@@ -23,6 +27,4 @@ caesarCipher = (str, num) => {
     return newStr;
 }
 
-const input = readline.question('What phrase would you like to encrypt? ').toLowerCase();
-const shift = parseInt(readline.question('How many letters would you like to shift? '));
 console.log(caesarCipher(input, shift))
