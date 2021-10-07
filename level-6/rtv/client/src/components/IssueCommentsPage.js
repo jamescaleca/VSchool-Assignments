@@ -2,23 +2,23 @@ import React, { useEffect, useContext, useParams, useState  } from 'react'
 import { UserContext } from '../context/UserProvider.js'
 
 function IssueCommentsPage(props) {
-    const { getIssueById } = useContext(UserContext)
+    const { getIssueById, issues, getAllIssues } = useContext(UserContext)
     const [currentIssue, setCurrentIssue] = useState()
-    const { title, description } = props
+    const { issue } = props
 
-    const {_id} = useParams(_id)
-    console.log(_id)
+    // const {_id} = useParams(_id)
+    console.log(issues)
 
     useEffect(() => {
-        getIssueById(_id)
+        getIssueById(issue._id)
     }, [])
 
-    console.log(currentIssue)
+    // console.log()
 
     return (
         <>
-            <h1>{title}</h1>
-            <h2>{description}</h2>
+            <h1>{issues}</h1>
+            {/* <h2></h2> */}
         </>
     )
 }

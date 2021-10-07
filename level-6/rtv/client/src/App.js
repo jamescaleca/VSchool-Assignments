@@ -31,8 +31,8 @@ export default function App() {
                     redirectTo='/'
                     token={token}
                 />
-                <ProtectedRoute
-                    exact path='/api/issues/{id}'
+                <Route
+                    exact path='/api/issues/:issueId'
                     component={IssueCommentsPage}
                     token={token}
                 />
