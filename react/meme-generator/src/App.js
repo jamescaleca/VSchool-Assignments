@@ -68,7 +68,7 @@ class App extends React.Component() {
                 <form id="form" name="new-meme" onSubmit={this.handleSubmit}>
                     <input 
                         placeholder="Top Text"
-                        value={}
+                        value=''
                         type="text"
                         name="topText"
                         onChange={this.handleChange}
@@ -76,7 +76,7 @@ class App extends React.Component() {
                     <br/>
                     <input 
                         placeholder="Bottom Text"
-                        value={}
+                        value=''
                         type="text"
                         name="bottomText"
                         onChange={this.handleChange}

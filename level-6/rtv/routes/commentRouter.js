@@ -1,59 +1,41 @@
 const express = require('express')
 const commentRouter = express.Router()
+const Issue = require('../models/issue.js')
 const Comment = require('../models/comment.js')
-
-// Get All Comments
-commentRouter.get('/', (req, res, next) => {
-  Comment.find((err, comments) => {
-    if(err){
-      res.status(500)
-      return next(err)
-    }
-    return res.status(200).send(comments)
-  })
-})
 
 // Add new Comment
 commentRouter.post('/', (req, res, next) => {
-  req.body.user = req.user._id
-  const newComment = new Comment(req.body)
-  newComment.save((err, savedComment) => {
-    if(err){
-      res.status(500)
-      return next(err)
-    }
-    return res.status(201).send(savedComment)
-  })
+    req.body.user = req.user._id
+    const id = req.params.issueId
+    const newComment = new Comment(req.body)
+
+    Issue.findById({ _id: id }, (err, issue) => {
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        issue.comments.push(newComment)
+        issue.populate('comments')
+        issue.save()
+        
+        return res.status(200).send(issue)
+    })
+    
 })
 
-//Delete Comment
+// Delete comment by id
 commentRouter.delete('/:commentId', (req, res, next) => {
-  Comment.findByIdAndDelete(
-    { _id: req.params.commentId, user: req.user._id },
-    (err, deletedComment) => {
-      if(err){
-        res.status(500)
-        return next(err)
-      }
-      return res.status(200).send(`Successfully deleted comment ${deletedComment}`)
-    }
-  )
-})
-
-// Update Comment
-commentRouter.put('/:commentId', (req, res, next) => {
-  Comment.findByIdAndUpdate(
-    { _id: req.params.commentId, user: req.user._id },
-    req.body,
-    { new: true },
-    (err, updatedComment) => {
-      if(err){
-        res.status(500)
-        return next(err)
-      }
-      return res.status(201).send(updatedComment)
-    }
-  )
+    req.body.user = req.user._id
+    const issueId = req.params.issueId
+    Comment.findOneAndDelete(
+        { _id: req.params.commentId, user: req.body.user, issue: issueId },
+        (err, deletedComment) => {
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(`Successfully deleted comment: ${deletedComment.comment}`)
+        })
 })
 
 module.exports = commentRouter
