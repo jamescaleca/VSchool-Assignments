@@ -1,24 +1,12 @@
-import React, { useEffect, useContext, useParams, useState  } from 'react'
-import { UserContext } from '../context/UserProvider.js'
+import React from 'react'
 
 function IssueCommentsPage(props) {
-    const { getIssueById, issues, getAllIssues } = useContext(UserContext)
-    const [currentIssue, setCurrentIssue] = useState()
-    const { issue } = props
-
-    // const {_id} = useParams(_id)
-    console.log(issues)
-
-    useEffect(() => {
-        getIssueById(issue._id)
-    }, [])
-
-    // console.log()
+    const { title, description } = props.location.state
 
     return (
         <>
-            <h1>{issues}</h1>
-            {/* <h2></h2> */}
+            <h1>{title}</h1>
+            <h2>{description}</h2>
         </>
     )
 }
