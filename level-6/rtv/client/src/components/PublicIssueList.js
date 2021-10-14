@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import IssuePreview from './IssuePreview'
 
 export default function IssueList(props) {
-    const { issues, editIssue, deleteIssue, getUserIssues } = props
+    const { issues, editIssue, deleteIssue } = props
 
     return (
         <ul className='issue-list'>
@@ -22,13 +21,9 @@ export default function IssueList(props) {
                         }}
                     >
                         <h1>{issue.title}</h1>
+                        <h2>{issue.description}</h2>
                     </Link>
-                    <IssuePreview 
-                        {...issue}
-                        key={`${issue._id}`}
-                        deleteIssue={deleteIssue}
-                        editIssue={editIssue}
-                    />
+                    <hr />
                 </>
             )}
         </ul>

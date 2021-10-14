@@ -31,10 +31,11 @@ export default function App() {
                     redirectTo='/'
                     token={token}
                 />
-                <Route
+                <ProtectedRoute
                     exact path='/api/issues/:issueId'
                     component={IssueCommentsPage}
                     token={token}
+                    // redirectTo='/profile'
                 />
             </Switch>
         </div>

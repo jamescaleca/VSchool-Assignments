@@ -13,6 +13,20 @@
   background-color: #eee9;
 }
 
+.app #new-comment-form {
+  border: 1px solid red;
+  margin: 20px 20px;
+  padding: 5px;
+}
+
+.app #new-comment-form p {
+  margin: 5px;
+}
+
+.app #new-comment-form input {
+  width: 30rem;
+}
+
 .navbar {
   display: -webkit-box;
   display: -ms-flexbox;

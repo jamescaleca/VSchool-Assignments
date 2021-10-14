@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
-
-const initInputs = {
-    title: '',
-    description: ''
-}
+import React, { useState, useContext } from 'react'
+import { UserContext } from '../context/UserProvider'
 
 export default function IssueForm(props) {
+    const initInputs = {
+        title: props.title || '',
+        description: props.description || ''
+    }
+
     const [inputs, setInputs] = useState(initInputs)
-    const { addIssue } = props
+    const { editIssue, submitBtnRedirect, addIssue } = useContext(UserContext)
+    const { editToggle } = props
 
     function handleChange(e) {
         const {name, value} = e.target
@@ -19,8 +21,11 @@ export default function IssueForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        addIssue(inputs)
+        editToggle ? 
+        editIssue(inputs, props._id) :
+        addIssue(inputs, props._id)
         setInputs(initInputs)
+        submitBtnRedirect()
     }
 
     const { title, description } = inputs
@@ -41,7 +46,7 @@ export default function IssueForm(props) {
                 onChange={handleChange}
                 placeholder='Description'
             />
-            <button>Add Issue</button>
+            <button>Submit Issue</button>
         </form>
     )
 }

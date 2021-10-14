@@ -7,9 +7,12 @@ export default function Profile() {
     const {
         user:
             { username },
+            token,
             addIssue,
             issues,
-            getUserIssues
+            getUserIssues,
+            deleteIssue,
+            editIssue
     } = useContext(UserContext)
 
     useEffect(() => {
@@ -24,7 +27,12 @@ export default function Profile() {
             <h3>Add an Issue</h3>
             <IssueForm addIssue={addIssue} />
             <h3>Your Issues</h3>
-            <IssueList issues={issues} />
+            <IssueList 
+                issues={issues}
+                deleteIssue={deleteIssue}
+                editIssue={editIssue}
+                token={token}
+            />
         </div>
     )
 }

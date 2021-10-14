@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import IssueList from './IssueList.js'
+import PublicIssueList from './PublicIssueList.js'
 import { UserContext } from '../context/UserProvider.js'
 
 export default function Public(){
@@ -12,7 +12,7 @@ export default function Public(){
 
     return (
         <div className="public">
-            <IssueList issues={issues} />
+            <PublicIssueList issues={issues} />
         </div>
     )
 }
