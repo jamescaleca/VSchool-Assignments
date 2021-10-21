@@ -1,4 +1,5 @@
 import React from 'react'
+import '../css/styles.css'
 
 export default function AuthForm(props) {
     const {
@@ -13,7 +14,7 @@ export default function AuthForm(props) {
     } = props
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form id='auth-form' onSubmit={handleSubmit}>
             <input 
                 type='text'
                 value={username}

@@ -1,19 +1,31 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { UserContext } from '../context/UserProvider.js'
+import '../css/styles.css'
 
 function IssueCommentsPage(props) {
-    const { title, description, _id, comments } = props.location.state
+    const { title, description, _id, user, username } = props.location.state
 
     const initInputs = {
         comment: '',
-        user: props.user || '',
-        _id: props._id || ''
+        user: user || '',
+        username: username || '',
+        _id: _id || ''
     }
 
     const [inputs, setInputs] = useState(initInputs)
-    // const [issueComments, setCommentState] = useState(comments)
-    console.log(comments)
-    const { commentSubmitRedir, userAxios, getIssueById, addComment } = useContext(UserContext)
+    const { addComment, getAllComments, issues } = useContext(UserContext)
+
+
+    const currentIssue = issues.find(issue => (issue._id === _id))
+    const newCommentsArray = currentIssue.comments.map(comment => (
+        <>
+            <li>
+                <p>{comment.comment}</p>
+                <p>{comment.user}</p>
+            </li>
+            <hr />
+        </>
+    ))
 
     function handleChange(e) {
         const {name, value} = e.target
@@ -27,30 +39,26 @@ function IssueCommentsPage(props) {
         e.preventDefault()
         addComment(inputs, _id)
         setInputs(initInputs)
-        // commentSubmitRedir(_id)
-        getIssueById(_id)
+        getAllComments(_id)
     }
 
 
-    const { comment, username } = inputs
+    const { comment } = inputs
 
-    const allIssueComments = comments.map(comment => (
-        <>
-            <li>
-                <p>{comment.comment}</p>
-                <p>{comment.user}</p>
-            </li>
-            <hr />
-        </>
-    ))
+    console.log(currentIssue)
+
+    // useEffect(() => {
+    //     getIssueById(_id)
+    //     getAllComments(_id)
+    // }, [])
 
     return (
-        <>
+        <div id='issue-comments-page'>
             <h1>{title}</h1>
             <h2>{description}</h2>
 
             <form onSubmit={handleSubmit} id='new-comment-form'>
-                <p>Leave a comment as {username}</p>
+                <p>Leave a comment as @{username}</p>
                 <input
                     type='text'
                     name='comment'
@@ -61,11 +69,10 @@ function IssueCommentsPage(props) {
                 <button>Comment</button>
             </form>
 
-            {/* <h2>{_id}</h2> */}
             <ul id='comments-section'>
-                {allIssueComments}
+                {newCommentsArray}
             </ul>
-        </>
+        </div>
     )
 }
 

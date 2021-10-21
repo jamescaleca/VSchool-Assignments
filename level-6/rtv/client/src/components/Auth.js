@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import AuthForm from './AuthForm.js'
 import { UserContext } from '../context/UserProvider.js'
+import '../css/styles.css'
 
 const initInputs = {userName: '', password: ''}
 
@@ -35,7 +36,7 @@ export default function Auth() {
 
     return (
         <div className='auth-container'>
-            <h1>Rock The Vote</h1>
+            <h1 id='site-title'>Rock The Vote</h1>
             { !toggle ? 
                 <>
                     <AuthForm 

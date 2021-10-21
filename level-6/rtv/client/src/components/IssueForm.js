@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../context/UserProvider'
+import '../css/styles.css'
 
 export default function IssueForm(props) {
     const initInputs = {

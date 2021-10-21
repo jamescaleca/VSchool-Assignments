@@ -17,7 +17,7 @@ export default function UserProvider(props) {
         user: JSON.parse(localStorage.getItem('user')) || {},
         token: localStorage.getItem('token') || '',
         issues: [],
-        currentIssue: {},
+        // currentIssue: {},
         errMsg: ''
     }
 
@@ -98,6 +98,20 @@ export default function UserProvider(props) {
             .catch(err => console.log(err.response.data.errMsg))
     }
 
+    // GET ALL COMMENTS
+    function getAllComments(issueId) {
+        userAxios.get(`/api/issues/${issueId}/comments`)
+            .then(res => setUserState(prevState => ({
+                ...prevState,
+                issues: prevState.issues.map(issue => 
+                    issueId === issue._id ? 
+                    {...issue, comments: [...res.data]} : 
+                    issue
+                )
+            })))
+            .catch(err => console.log(err.response.data.errMsg))
+    }
+
     // ADD AN ISSUE
     function addIssue(newIssue) {
         userAxios.post('/api/issues', newIssue)
@@ -125,10 +139,14 @@ export default function UserProvider(props) {
         userAxios.post(`/api/issues/${issueId}/comments`, newComment)
             .then(res => setUserState(prevState => ({
                 ...prevState,
-                comments: [...prevState.comments, res.data]
+                issues: prevState.issues.map(issue => 
+                    issueId === issue._id ? 
+                    {...issue, comments: [...issue.comments, newComment]} : 
+                    issue
+                )
             })))
             .catch(err => console.log(err.response.data.errMsg))
-            return getIssueById(issueId)
+            return getAllComments(issueId)
     }
 
     //EDIT ISSUE
@@ -140,6 +158,56 @@ export default function UserProvider(props) {
                     issue._id !== issueId ? issue : res.data)})))
             .catch(err => console.log(err))
             return getUserIssues()
+    }
+
+    //UPDATE VOTESTOTAL
+    // function updateVotesTotal(issueId) {
+    //     userAxios.put(`/api/issues/${issueId}`)
+    //         .then(res => setUserState(prevState => ({
+    //             ...prevState,
+    //             issues: prevState.issues.map(issue =>
+    //                 issue._id !== issueId ? 
+    //                 {
+    //                     ...issue,
+    //                     votesTotal: 
+    //                 } : issue
+    //             )})))
+    // }
+
+    //UPVOTE ISSUE
+    function upvoteIssue(issueId) {
+        userAxios.put(`/api/issues/upvote/${issueId}`)
+            .then(res => setUserState(prevState => ({
+                ...prevState,
+                issues: prevState.issues.map(issue => 
+                    issueId = issue._id ?
+                    {
+                        ...issue, 
+                        upvotes: [...issue.upvotes, res.data]
+                    } : 
+                    issue
+                )
+            })))
+            .catch(err => console.log(err))
+            return getAllIssues()
+        }
+
+    //DOWNVOTE ISSUE
+    function downvoteIssue(issueId) {
+        userAxios.put(`/api/issues/downvote/${issueId}`)
+            .then(res => setUserState(prevState => ({
+                ...prevState,
+                issues: prevState.issues.map(issue => 
+                    issueId = issue._id ?
+                    {
+                        ...issue, 
+                        downvotes: [...issue.downvotes, res.data]
+                    } : 
+                    issue
+                )
+            })))
+            .catch(err => console.log(err))
+            return getAllIssues()
     }
 
     //DELETE ISSUE
@@ -170,6 +238,7 @@ export default function UserProvider(props) {
                 getAllIssues,
                 getUserIssues,
                 getIssueById,
+                getAllComments,
                 editIssue,
                 deleteIssue,
                 signup,
@@ -180,6 +249,8 @@ export default function UserProvider(props) {
                 resetAuthErr,
                 submitBtnRedirect,
                 commentSubmitRedir,
+                upvoteIssue,
+                downvoteIssue,
                 userAxios
             }}
         >

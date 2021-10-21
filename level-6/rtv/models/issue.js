@@ -22,7 +22,7 @@ const issueSchema = new Schema({
     }],
     votesTotal: {
         type: Number,
-        default: 1
+        default: 0
     },
     user: {
         type: Schema.Types.ObjectId,
