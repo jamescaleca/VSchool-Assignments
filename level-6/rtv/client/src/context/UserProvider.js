@@ -85,7 +85,7 @@ export default function UserProvider(props) {
                 ...prevState,
                 issues: res.data
             })))
-            .catch(err => console.log(err.response.data.errMsg))
+            .catch(err => console.log(err.res.data.errMsg))
     }
 
     // GET USER ISSUES

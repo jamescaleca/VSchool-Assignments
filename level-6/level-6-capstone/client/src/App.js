@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import Auth from './components/Auth'
+import Home from './components/Home'
+import Navbar from './components/Navbar'
+import ProtectedRoute from './components/ProtectedRoute'
+import { UserContext } from './contexts/userProvider'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const { token, logout } = useContext(UserContext)
+    return (
+        <div className='app'>
+            { token && <Navbar logout={logout} /> }
+            <Switch>
+                <Route 
+                    exact path='/'
+                    render={() => token ? <Redirect to='/home'/> : <Auth />}
+                />
+                <ProtectedRoute 
+                    path='/home'
+                    component={Home}
+                    redirectTo='/'
+                    token={token}
+                />
+            </Switch>
+        </div>
+    )
 }
 
-export default App;
+export default App
