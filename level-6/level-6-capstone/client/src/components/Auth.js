@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import AuthForm from './AuthForm.js'
 import { UserContext } from '../contexts/userProvider'
 
-const initInputs = {userName: '', password: ''}
+const initInputs = {username: '', password: '', stateRes: '', countyRes: {county: '', fips: ''}}
 
 export default function Auth() {
     const [inputs, setInputs] = useState(initInputs)
@@ -11,7 +11,6 @@ export default function Auth() {
     const { signup, login, errMsg, resetAuthErr } = useContext(UserContext)
 
     function handleChange(e) {
-        e.preventDefault()
         const {name, value} = e.target
         setInputs(prevInputs => ({
             ...prevInputs,
@@ -42,7 +41,9 @@ export default function Auth() {
                     <AuthForm 
                         handleChange={handleChange}
                         handleSubmit={handleSignup}
-                        inputs={inputs, {state: ''}}
+                        initInputs={initInputs}
+                        inputs={inputs}
+                        setInputs={setInputs}
                         btnText='Sign up'
                         errMsg={errMsg}
                         toggle={toggle}
@@ -54,7 +55,9 @@ export default function Auth() {
                     <AuthForm 
                         handleChange={handleChange}
                         handleSubmit={handleLogin}
+                        initInputs={initInputs}
                         inputs={inputs}
+                        setInputs={setInputs}
                         btnText='Login'
                         errMsg={errMsg}
                         toggle={toggle}

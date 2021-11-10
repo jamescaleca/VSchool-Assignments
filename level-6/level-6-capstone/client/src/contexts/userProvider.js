@@ -24,14 +24,15 @@ export default function UserProvider(props) {
     function signup(credentials) {
         axios.post('/auth/signup', credentials)
             .then(res => {
-                const { user, token, stateRes } = res.data
+                const { user, token, stateRes, countyRes } = res.data
                 localStorage.setItem('token', token)
                 localStorage.setItem('user', JSON.stringify(user))
                 setUserState(prevUserState => ({
                     ...prevUserState,
                     user,
                     token,
-                    stateRes
+                    stateRes,
+                    countyRes
                 }))
             })
             .catch(err => handleAuthError(err.response.data.errMsg))
@@ -59,7 +60,6 @@ export default function UserProvider(props) {
         setUserState({
             user: {},
             token: '',
-            issues: []
         })
     }
 

@@ -14,7 +14,10 @@ const userSchema = new Schema({
         required: true
     },
     stateRes: String,
-    countyRes: String,
+    countyRes: {
+        county: String,
+        fips: Number
+    },
     memberSince: {
         type: Date,
         default: Date.now

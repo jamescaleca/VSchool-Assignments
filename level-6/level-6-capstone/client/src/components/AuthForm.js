@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {DataContext} from '../contexts/dataProvider'
+import axios from 'axios'
 
 export default function AuthForm(props) {
     const {
@@ -11,16 +12,56 @@ export default function AuthForm(props) {
         inputs: {
             username,
             password,
-            state
-        }
+            stateRes,
+            countyRes
+        },
+        setInputs
     } = props
+    
+    const { allStatesAbbrevArr } = useContext(DataContext)
 
-    const { allStatesAbbrevDropDown, countyNames } = useContext(DataContext)
-    console.log(countyNames)
+    const [selectedState, setSelectedState] = useState(stateRes)
+    const [stateCounties, setStateCounties] = useState([])
+    const [statePlaceholder, setStatePlaceholder] = useState('default')
+    const [countyPlaceholder, setCountyPlaceholder] = useState('default')
+    const [selectedCounty, setSelectedCounty] = useState()
 
-    const countiesDropDown = countyNames.map(county => (
-        <option key={county} value={`${county}`}>{county}</option>
+
+    function handleStateChange(e) {
+        const {name, value} = e.target
+        axios
+            .get(`https://api.covidactnow.org/v2/county/${value}.timeseries.json?apiKey=a303c351b45d45ae8e97a44c1bacd4f2`)
+            .then(res => {
+                setStateCounties(res.data)
+                console.log(res.data)
+                setInputs(prevInputs => ({
+                    ...prevInputs,
+                    [name]: value
+                }))
+            })
+            .catch((err) => {if(err) console.log(err)})
+    }
+
+    function handleCountyChange(e) {
+        const {value} = e.target
+        let selectedCounty = countiesFips.filter(county => {
+            if(county.county === value){
+                return county
+            }
+        })
+        console.log(selectedCounty)
+        setInputs(prevInputs => ({
+            ...prevInputs,
+            countyRes: {county: value, fips: selectedCounty[0].fips}
+        }))
+    }
+
+    let allStatesAbbrevDropDown = allStatesAbbrevArr.map(state => (
+        <option key={state.state} value={`${state.state}`}>{state.state}</option>
     ))
+
+
+    let countiesFips = stateCounties.map(county => ({county: county.county, fips: county.fips}))
 
     return (
         <form id='auth-form' onSubmit={handleSubmit}>
@@ -32,30 +73,39 @@ export default function AuthForm(props) {
                 placeholder='Username'
             />
             <input 
-                type='text'
+                type='password'
                 value={password}
                 name='password'
                 onChange={handleChange}
                 placeholder='Password'
-            />
+            /><br/>
             { !toggle ? 
                 <>
                     <label for='stateRes'>Select state of residence:</label>
                     <select 
+                        defaultValue={statePlaceholder}
                         name='stateRes'
                         id='stateRes'
-                        onChange={handleChange}
-                    >{allStatesAbbrevDropDown}
-                    </select>
+                        value={selectedState.value}
+                        onChange={handleStateChange}
+                    ><option value='default' hidden disabled>State</option>{allStatesAbbrevDropDown}
+                    </select> 
                     
                     <label for='countyRes'>Select county of residence:</label>
-                    <select>
-                        {countiesDropDown}
+                    <select
+                        defaultValue={countyPlaceholder}
+                        value={countyRes.county}
+                        name='countyRes'
+                        // id={countyRes.fips}
+                        onChange={handleCountyChange}
+                    ><option value='default' hidden>County</option>
+                    {stateCounties.map(county => (
+                        <option value={`${county.county}`}>{county.county}</option>
+                    ))}
                     </select>
-                </>
-                : null
+                    
+                </> : null
             }
-            
             <button>{ btnText }</button>
             <p style={{color: 'red'}}>{ errMsg }</p>
         </form>
