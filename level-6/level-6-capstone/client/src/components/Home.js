@@ -1,66 +1,55 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { UserContext } from '../contexts/userProvider'
 import { DataContext } from '../contexts/dataProvider'
 import CountyMap from './CountyMap'
+import CountyResData from './CountyResData'
+import CountryData from './CountryData'
+import StateResData from './StateResData'
 import '../css/styles.css'
 
 function Home() {
     const { user: { username, stateRes, countyRes } } = useContext(UserContext)
-    const { 
-        getStateResCountiesData, 
-        countyDataRender, 
-        countyData, 
-        allStatesAbbrevArr,
-        getCountyCoords,
-        countyCoordsData
-    } = useContext(DataContext)
-
-    const countyUrlRes = countyRes.county.replace(' ', '+')
-
-    
-
-    useEffect(() => {
-        getCountyCoords(stateRes, countyUrlRes)
-        getStateResCountiesData(stateRes)
-    }, [])
-
-    const countyResData = countyData.filter(county => {
-        if(county.county === countyRes.county){return county}
-    })
-
-    const stateResCoord = allStatesAbbrevArr.filter(state => {
-        if(state.state === stateRes){return state}
-    })
-
-    console.log(countyCoordsData)
+    const { countyResData, stateResData, countryView } = useContext(DataContext)
 
     return (
-        <div className='home'>
-            <div id='home-page-title'>
-                <h1>Welcome @<i>{username}</i> from {countyRes.county}, {stateRes}</h1>
-            </div>
-            <h2>Data from your county:</h2>
-            { countyResData.length > 0 ? 
-            <>
-                <ul style={{listStyle: 'none'}}>
-                    <li>{countyResData[0].county}, {countyResData[0].state}</li>
+        <>
+        { countryView === false ?
+            <>{ stateResData.length !== 0 && countyResData.length !== 0 ?
+                <div className='home'>
+                    <div id='home-page-title'>
+                        <h1>Welcome @<i>{username}</i></h1>
+                    </div>
+                    <ul id='main-content' style={{paddingLeft: '0'}}>
+                        <li>
+                            <CountyResData />
+                            <StateResData />
+                        </li>
+                        <li>
+                            <CountyMap />
+                        </li>
+                        <li>
+                            <p>The more red a county appears on the map, the higher the percentage of that county's population is vaccinated.</p>
+                            <p>The more green each county appears, the lower the percentage of the population is vaccinated.</p>
+                            <p>Data courtesy of <a>covidactnow.org</a></p>
+                        </li>
+                    </ul>
+                </div> : 
+                <h1>Loading data...</h1>
+            }</>
+            :
+            <div className='home'>
+                <ul>
+                    <li><CountryData /></li>
+                    <li><CountyMap /></li>
                     <li>
-                        Vaccinations Completed: <b>{countyResData[0].actuals.vaccinationsCompleted}</b>
-                    </li>
-                    <li>
-                        Total Cases: <b>{countyResData[0].actuals.cases}</b>
+                        <p>The more red a county appears on the map, the higher the percentage of that county's population is vaccinated.</p>
+                        <p>The more green each county appears, the lower the percentage of the population is vaccinated.</p>
+                        <p>Data courtesy of <a>covidactnow.org</a></p>
                     </li>
                 </ul>
-                <p>Data current as of: <b>{countyResData[0].lastUpdatedDate}</b></p>
-                <CountyMap 
-                    stateResCoord={stateResCoord}
-                    countyCoordsData={countyCoordsData}
-                    countyRes={countyRes.county}
-                />
-            </> : null
-            }
-            
-        </div>
+            </div>
+        }
+        </>
     )
 }
 

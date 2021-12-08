@@ -5,9 +5,11 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import ProtectedRoute from './components/ProtectedRoute'
 import { UserContext } from './contexts/userProvider'
+import { DataContext } from './contexts/dataProvider'
 
 function App() {
     const { token, logout } = useContext(UserContext)
+    const { allStatesData } = useContext(DataContext)
     return (
         <div className='app'>
             { token && <Navbar logout={logout} /> }

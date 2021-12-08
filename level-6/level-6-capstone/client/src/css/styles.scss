@@ -1,3 +1,60 @@
+$canvas: #030303;
+$element: #1A1A1B;
+
+$font-title: rgb(233, 233, 233);
+$font-descr: rgb(206, 206, 206); 
+$marker-font: rgb(19, 19, 19);
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    outline: none;
+    text-decoration: none;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 3em;
+    background-color: $canvas;
+    color: $font-descr;
+    height: auto;
+
+    #navbar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 2.5em;
+        button {
+            background-color: $element;
+            color: firebrick;
+            padding: 3px 8px;
+        }
+    }
+
+    .home {
+        display: flex;
+        flex-direction: column;
+        height: 150vh;
+        #home-page-title {
+            margin-bottom: 1em;
+        }
+        .map {
+            height: 95vh;
+            width: auto;
+            margin-right: 1em;
+            margin-left: 1em;
+            .marker {
+                color: $marker-font;
+            }
+        }
+        #main-content {
+            li {
+                padding-bottom: 1em;
+            }
+        }
+    }
 }

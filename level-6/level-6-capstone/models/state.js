@@ -17,7 +17,8 @@ const stateSchema = new Schema({
     },
     vaxCompleted: {
         type: Number
-    }
+    },
+    coordinates: Array
 })
 
 module.exports = mongoose.model('State', stateSchema)
