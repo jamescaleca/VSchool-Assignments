@@ -7,7 +7,7 @@ export default function CountryData() {
 
     return (
         <div>
-            <ul>
+            <ul id='us-data-ul'>
                 <li><h1>US Data</h1></li>
                 <li>Population: <b>{countryData.population}</b></li>
                 <li>Vaccinations Completed: <b>{countryData.vaxCompleted}</b></li>

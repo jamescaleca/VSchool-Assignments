@@ -9,8 +9,8 @@ export default function CountyResData() {
 
     return (
         <>
-            <ul style={{listStyle: 'none'}}>
-                <li><h2>Data for {countyRes.county}:</h2></li>
+            <ul id='county-res-data-ul'>
+                <li><h1>Data for {countyRes.county}:</h1></li>
                 <li>Population: <b>{countyResData.population}</b></li>
                 <li>
                     Vaccinations completed: <b>{countyResData.actuals.vaccinationsCompleted}</b>

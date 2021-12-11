@@ -6,9 +6,9 @@ export default function StateResData() {
     const {stateResData} = useContext(DataContext)
     return (
         <>
-            <ul style={{listStyle: 'none'}}>
+            <ul id='state-res-data-ul'>
                 <li>
-                    <h2>Data for {stateResData.name}:</h2>
+                    <h1>Data for {stateResData.name}:</h1>
                 </li>
                 <li>Population: <b>{stateResData.population}</b></li>
                 <li>

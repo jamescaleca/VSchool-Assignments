@@ -5,14 +5,13 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import ProtectedRoute from './components/ProtectedRoute'
 import { UserContext } from './contexts/userProvider'
-import { DataContext } from './contexts/dataProvider'
 
-function App() {
-    const { token, logout } = useContext(UserContext)
-    const { allStatesData } = useContext(DataContext)
+export default function App() {
+    const { token } = useContext(UserContext)
+
     return (
         <div className='app'>
-            { token && <Navbar logout={logout} /> }
+            { token && <Navbar /> }
             <Switch>
                 <Route 
                     exact path='/'
@@ -28,5 +27,3 @@ function App() {
         </div>
     )
 }
-
-export default App

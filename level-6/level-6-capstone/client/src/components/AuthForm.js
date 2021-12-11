@@ -1,34 +1,35 @@
 import React, { useContext, useState } from 'react'
-import {DataContext} from '../contexts/dataProvider'
+import { UserContext } from '../contexts/userProvider'
+import { DataContext } from '../contexts/dataProvider'
 import axios from 'axios'
 
 export default function AuthForm(props) {
-    const {
-        handleChange,
-        handleSubmit,
-        btnText,
-        errMsg,
-        toggle,
+    const { btnText, handleSubmit } = props
+
+    const { 
         inputs: {
             username,
             password,
             stateRes,
             countyRes
         },
-        setInputs
-    } = props
-    
-    const { allStatesAbbrevArr } = useContext(DataContext)
+        setInputs,
+        toggle,
+        allStatesAbbrevArr, 
+        statePlaceholder, 
+        selectedState,
+        handleChange
+    } = useContext(DataContext)
 
-    const [selectedState, setSelectedState] = useState(stateRes)
+    const { errMsg } = useContext(UserContext)
+
     const [stateCounties, setStateCounties] = useState([])
-    const [statePlaceholder, setStatePlaceholder] = useState('default')
     const [countyPlaceholder, setCountyPlaceholder] = useState('default')
     const [selectedCounty, setSelectedCounty] = useState()
 
 
     function handleStateChange(e) {
-        const {name, value} = e.target
+        const { name, value } = e.target
         axios
             .get(`https://api.covidactnow.org/v2/county/${value}.timeseries.json?apiKey=a303c351b45d45ae8e97a44c1bacd4f2`)
             .then(res => {
@@ -60,7 +61,6 @@ export default function AuthForm(props) {
         <option key={state.state} value={`${state.state}`}>{state.state}</option>
     ))
 
-
     let countiesFips = stateCounties.map(county => ({county: county.county, fips: county.fips}))
 
     return (
@@ -80,7 +80,7 @@ export default function AuthForm(props) {
                 placeholder='Password'
             /><br/>
             { !toggle ? 
-                <>
+                <div id='select-st-cty'>
                     <label for='stateRes'>Select state of residence:</label>
                     <select 
                         defaultValue={statePlaceholder}
@@ -99,12 +99,12 @@ export default function AuthForm(props) {
                         // id={countyRes.fips}
                         onChange={handleCountyChange}
                     ><option value='default' hidden>County</option>
-                    {stateCounties.map(county => (
-                        <option value={`${county.county}`}>{county.county}</option>
-                    ))}
+                        {stateCounties.map(county => (
+                            <option value={`${county.county}`}>{county.county}</option>
+                        ))}
                     </select>
                     
-                </> : null
+                </div> : null
             }
             <button>{ btnText }</button>
             <p style={{color: 'red'}}>{ errMsg }</p>
