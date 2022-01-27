@@ -25,11 +25,14 @@ app.use(
     expressJwt({
         secret: process.env.SECRET,
         algorithms: ['HS256']
-    }))
+    })
+)
+
 app.use('/api', expressJwt({
     secret: process.env.SECRET,
     algorithms: ['HS256']
 }))
+
 app.use('/api/issues', require('./routes/issueRouter.js'))
 // app.use('/api/issues/:issueId/comments', require('./routes/commentRouter.js'))
 

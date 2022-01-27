@@ -10,7 +10,8 @@ export default function IssueForm(props) {
 
     const [inputs, setInputs] = useState(initInputs)
     const { editIssue, submitBtnRedirect, addIssue } = useContext(UserContext)
-    const { editToggle } = props
+    const { editToggle, toggle } = props
+    const { title, description } = inputs
 
     function handleChange(e) {
         const {name, value} = e.target
@@ -26,10 +27,10 @@ export default function IssueForm(props) {
         editIssue(inputs, props._id) :
         addIssue(inputs, props._id)
         setInputs(initInputs)
+        toggle()
         submitBtnRedirect()
     }
 
-    const { title, description } = inputs
 
     return (
         <form onSubmit={handleSubmit}>

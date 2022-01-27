@@ -28,7 +28,7 @@ export default function Profile() {
             <div id='add-issue-txt'>
                 <h3>Add an Issue</h3>
             </div>
-            <IssueForm addIssue={addIssue} />
+            <IssueForm />
 
             <div id='your-issues-txt'>
                 <h3>Your Issues</h3>

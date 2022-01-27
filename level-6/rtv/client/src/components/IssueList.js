@@ -5,7 +5,7 @@ import '../css/styles.css'
 
 export default function IssueList(props) {
     const { issues, editIssue, deleteIssue, getUserIssues, username } = props
-    console.log(username)
+    // console.log(username)
     return (
         <ul id='profile-issue-list'>
             { issues.map((issue) => 

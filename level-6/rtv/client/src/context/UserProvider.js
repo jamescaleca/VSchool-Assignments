@@ -152,27 +152,15 @@ export default function UserProvider(props) {
     //EDIT ISSUE
     function editIssue(updates, issueId) {
         userAxios.put(`/api/issues/${issueId}`, updates)
-            .then(res => setUserState(prevState => ({
+            .then(res => 
+                setUserState(prevState => ({
                 ...prevState,
                 issues: prevState.issues.map(issue => 
-                    issue._id !== issueId ? issue : res.data)})))
+                    issue._id !== issueId ? issue : res.data)}))
+                )
             .catch(err => console.log(err))
             return getUserIssues()
     }
-
-    //UPDATE VOTESTOTAL
-    // function updateVotesTotal(issueId) {
-    //     userAxios.put(`/api/issues/${issueId}`)
-    //         .then(res => setUserState(prevState => ({
-    //             ...prevState,
-    //             issues: prevState.issues.map(issue =>
-    //                 issue._id !== issueId ? 
-    //                 {
-    //                     ...issue,
-    //                     votesTotal: 
-    //                 } : issue
-    //             )})))
-    // }
 
     //UPVOTE ISSUE
     function upvoteIssue(issueId) {
